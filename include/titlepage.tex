@@ -1,0 +1,82 @@
+\newgeometry{margin = 2.5cm}
+\makeatletter
+\begin{titlepage}
+	\begin{minipage}[t][0.425\textheight][t]{\textwidth}
+		\begin{center}
+		    \ifx\toptitle\undefined
+    		    \vfill
+    		    \ifx\logopath\undefined
+    		    \else
+    			    \includegraphics[height=0.2125\textheight]{\logopath}
+    			\fi
+    		\else
+    		    \ifx\logopath\undefined
+    		    \else
+    			    \includegraphics[height=0.15\textheight]{\logopath}
+    			\fi
+    			\vfill
+    			{\huge \textsc{\toptitle}}
+			\fi
+			\vfill
+		\end{center}
+	\end{minipage}
+	\vfill
+	\begin{minipage}{\textwidth}
+		\hspace{0.5em}
+		\begin{mdframed}[linewidth = 2pt, innertopmargin = 1em, innerbottommargin = 1em, leftline = false, rightline = false]
+			\begin{center}
+				{\huge \bfseries \@title}
+			\end{center}
+		\end{mdframed}
+		\hspace{0.5em}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[b][0.425\textheight][t]{\textwidth}
+			\ifx\subtitle\undefined
+			\else
+			    \vspace{-0.5em}
+			    \begin{center}
+				    {\LARGE \subtitle}
+				\end{center}
+			\fi
+			\vfill
+			\ifx\rightauthor\undefined
+			    \begin{center}
+			        \ifx\authorhead\undefined
+			        \else
+		                {\large\it \authorhead\\[0.5em]}
+		            \fi
+			        {\large \@author}
+			    \end{center}
+			\else
+			    \begin{minipage}[t]{0.5\textwidth}
+			        \begin{flushleft}
+			            \ifx\authorhead\undefined
+			            \else
+			                {\large\it \authorhead\\[0.5em]}
+			            \fi
+				        {\large \@author}
+				    \end{flushleft}
+				\end{minipage}
+				\begin{minipage}[t]{0.5\textwidth}
+				    \begin{flushright}
+				        \ifx\rightauthorhead\undefined
+			            \else
+			                {\large\it \rightauthorhead\\[0.5em]}
+			            \fi
+				        {\large \rightauthor}
+				    \end{flushright}
+				\end{minipage}
+			\fi
+			\vfill
+			\begin{center}
+			    \ifx\context\undefined
+			    \else
+			        {\large \context \\[0.5em]}
+			    \fi
+			    {\large \@date}
+			\end{center}
+	\end{minipage}
+\end{titlepage}
+\makeatother
+\restoregeometry
