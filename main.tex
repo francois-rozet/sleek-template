@@ -1,14 +1,17 @@
 \documentclass[a4paper, 12pt]{report}
 
-\def\languages{french, english} %
+\def\languages{french, english}
 
 %%%%%%%%%%%%%%%%%%% Packages
 
 \input{./include/head.tex}
 
+\input{./include/libraries/mathematics.tex}
+\input{./include/libraries/units.tex}
+
 %%%%%%%%%%%%%%%%%%% Titlepage
 
-\def\logopath{./include/resources/pdf/logo.pdf}
+\def\logopath{./resources/pdf/logo.pdf}
 \def\toptitle{Random University}
 \title{A sleek \LaTeX{} template}
 %\def\subtitle{}
@@ -23,56 +26,10 @@
 
 \begin{document}
 	\input{./include/titlepage.tex}
-	\mytableofcontents
+	\romantableofcontents
 	\part{Part}
 	\chapter{Chapter}
 	\section{Section}
 	\subsection{Subsection}
 	\subsubsection{Subsubsection}
-	\newpage	
-	
-	\st, \tq, \cad, \Cad
-	
-	\vspace{2cm}
-	
-	$\fact{n}$, $\e{n}$, $\deriv x$, $\tr{A}$
-	
-	\vspace{2cm}
-	
-	\begin{thm}
-		Lorem ipsum dolor sit amet.
-	\end{thm}
-	\begin{proof}
-		Lorem ipsum dolor sit amet.
-	\end{proof}
-	\begin{lem}
-		Lorem ipsum dolor sit amet.
-	\end{lem}
-	\begin{prop}
-		Lorem ipsum dolor sit amet.
-	\end{prop}
-	\begin{defn}
-		Lorem ipsum dolor sit amet.
-	\end{defn}
-	\begin{hyp}
-		Lorem ipsum dolor sit amet.
-	\end{hyp}
-	\begin{quest}
-		Lorem ipsum dolor sit amet.
-	\end{quest}
-	\begin{answ}
-		Lorem ipsum dolor sit amet.
-	\end{answ}
-	\begin{expl}
-		Lorem ipsum dolor sit amet.
-	\end{expl}
-	\begin{rmk}
-		Lorem ipsum dolor sit amet.
-	\end{rmk}
-	\begin{note}
-		Lorem ipsum dolor sit amet.
-	\end{note}
-	\begin{tip}
-		Lorem ipsum dolor sit amet.
-	\end{tip}
 \end{document}
