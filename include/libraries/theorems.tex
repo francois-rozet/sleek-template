@@ -1,10 +1,12 @@
 %%%%% Packages
 
 \usepackage{amsthm}
+\usepackage{thmtools}
 
 %%%%% Settings
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand\qedadd{\pushQED{\qed}\popQED}
 
 \begingroup
 \makeatletter
@@ -15,6 +17,11 @@
 }
 \endgroup
 
+\makeatletter
+\define@key{thmdef}{mdthm}[{}]{
+	\thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
+\makeatother
+
 \ifx\lgthm\undefined
 	\def\lgthm{Theorem}
 	\def\lgprf{Proof}
@@ -22,6 +29,7 @@
 	\def\lgprop{Proposition}
 	\def\lgdefn{Definition}
 	\def\lghyp{Hypothesis}
+	\def\lgmeth{Method}
 	\def\lgquest{Question}
 	\def\lgansw{Answer}
 	\def\lgexpl{Example}
@@ -35,11 +43,12 @@
 \theoremstyle{plain}
 \newtheorem{thm}{\lgthm}
 \newtheorem{lem}[thm]{\lglem}
-\newtheorem{prop}{\lgprop}
+\newtheorem{prop}[thm]{\lgprop}
 
 \theoremstyle{definition}
 \newtheorem{defn}{\lgdefn}
 \newtheorem{hyp}{\lghyp}
+\newtheorem{meth}{\lgmeth}
 \newtheorem{quest}{\lgquest}
 
 \theoremstyle{remark}
@@ -51,25 +60,30 @@
 
 % framed
 
-\newenvironment{framedtext}[5]{
-	\ifstrempty{#1}{}{\refstepcounter{#1}}
-	\mdfsetup{
-		frametitle={
-			\tikz[baseline=(current bounding box.east), outer sep=0pt]
-			\node[anchor=east, rectangle, fill=\ifstrempty{#3}{black!10}{#3}]
-			{\strut \ifstrempty{#4}{}{#4~}\ifstrempty{#2}{}{\csname the#2\endcsname.~}\ifstrempty{#5}{}{#5~}};
-		},
-		innertopmargin=0.5em,
-		linecolor=\ifstrempty{#3}{black!10}{#3},
-		linewidth=2pt,
-		topline=true,
-		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-	}
-	\begin{mdframed}[skipabove=1em, skipbelow=0.5em] \relax
-}{\end{mdframed}}
+\mdfdefinestyle{thicc}{
+	nobreak=true,
+	skipabove=\topskip,
+	skipbelow=\topskip,
+	innerleftmargin=0.5em,
+	innerrightmargin=0.5em,
+	innerbottommargin=0.5em,
+	innertopmargin=0.5em,
+	linewidth=0.25em,
+	roundcorner=0.15em,
+	linecolor=black!10,
+	frametitlebackgroundcolor=black!10,
+	theoremseparator={.}
+}
 
-\newenvironment{framedthm}[1][]{\begin{framedtext}{thm}{thm}{red!20}{\lgthm}{#1}}{\end{framedtext}}
-\newenvironment{framedprf}[1][]{\begin{framedtext}{}{thm}{}{\lgprf}{#1}}{\qed\end{framedtext}}
-\newenvironment{frameddefn}[1][]{\begin{framedtext}{defn}{defn}{black!20!green!20}{\lgdefn}{#1}}{\end{framedtext}}
-\newenvironment{framedquest}[1][]{\begin{framedtext}{quest}{quest}{green!20!blue!20}{\lgquest}{#1}}{\end{framedtext}}
-\newenvironment{framedansw}[1][]{\begin{framedtext}{answ}{answ}{}{\lgansw}{#1}}{\end{framedtext}}
+\declaretheorem[mdthm={style=thicc, linecolor=red!20, frametitlebackgroundcolor=red!20}, sibling=thm, name=\lgthm]{framedthm}
+\declaretheorem[mdthm={style=thicc, linecolor=red!20, frametitlebackgroundcolor=red!20}, sibling=thm, name=\lglem]{framedlem}
+\declaretheorem[mdthm={style=thicc, linecolor=blue!20, frametitlebackgroundcolor=blue!20}, sibling=thm, name=\lgprop]{framedprop}
+\declaretheorem[mdthm={style=thicc, nobreak=false}, parent=thm, name=\lgprf]{framedprf}
+
+\declaretheorem[mdthm={style=thicc, linecolor=black!20!green!20, frametitlebackgroundcolor=black!20!green!20}, sibling=defn, name=\lgdefn]{frameddefn}
+\declaretheorem[mdthm={style=thicc, linecolor=blue!20, frametitlebackgroundcolor=blue!20}, sibling=hyp, name=\lghyp]{framedhyp}
+\declaretheorem[mdthm={style=thicc}, name=\lgmeth]{framedmeth}
+\declaretheorem[mdthm={style=thicc, linecolor=orange!20, frametitlebackgroundcolor=orange!20}, sibling=quest, name=\lgquest]{framedquest}
+
+\declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=answ, name=\lgansw]{framedansw}
+\declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=expl, name=\lgexpl]{framedexpl}
