@@ -1,0 +1,64 @@
+%%%%%%%%%% Packages
+
+%%%%% Coding tools
+
+\usepackage{comment}
+\usepackage{xstring}
+
+%%%%% Encoding
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{eurosym}
+
+%%%%% Languages
+
+\ifx\languages\undefined
+	\usepackage[english]{babel}
+\else
+	\usepackage[\languages]{babel}
+\fi
+
+\def\languagefile{./include/languages/\languagename.tex}
+\InputIfFileExists{\languagefile}{}
+
+%%%%% Style
+
+\usepackage{geometry}
+\usepackage{fancyhdr}
+
+\edef\restoreparindent{\parindent=\the\parindent\relax}
+\usepackage[parfill]{parskip}
+
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{color}
+
+%%%%% Others
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[pdfusetitle]{hyperref}
+
+%%%%%%%%%% Features
+
+%%%%% Settings
+
+\geometry{paper=a4paper,top=3.5cm,bottom=2.5cm,right=2.5cm,left=2.5cm}
+
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[R]{\leftmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+%\restoreparindent
+
+%%%%% Commands
+
+\newcommand{\romantableofcontents}{
+	\newpage
+	\pagenumbering{roman}
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+}

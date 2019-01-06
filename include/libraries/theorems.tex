@@ -1,12 +1,16 @@
-%%%%% Packages
+%%%%%%%%%% Packages
 
 \usepackage{amsthm}
 \usepackage{thmtools}
 
+%%%%%%%%%% Features
+
 %%%%% Settings
 
-\renewcommand{\qedsymbol}{$\blacksquare$}
-\newcommand\qedadd{\pushQED{\qed}\popQED}
+\makeatletter
+\define@key{thmdef}{mdthm}[{}]{
+	\thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
+\makeatother
 
 \begingroup
 \makeatletter
@@ -17,10 +21,9 @@
 }
 \endgroup
 
-\makeatletter
-\define@key{thmdef}{mdthm}[{}]{
-	\thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
-\makeatother
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% language
 
 \ifx\lgthm\undefined
 	\def\lgthm{Theorem}
@@ -37,6 +40,10 @@
 	\def\lgnote{Note}
 	\def\lgtip{Tip}
 \fi
+
+%%%%% Commands
+
+\newcommand\qedadd{\pushQED{\qed}\popQED}
 
 %%%%% Environments
 
