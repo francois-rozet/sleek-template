@@ -1,0 +1,172 @@
+%%%%%%%%%% Packages
+
+\usepackage{inconsolata}
+\usepackage{listings}
+
+%%%%%%%%%% Features
+
+%%%%% Commands
+
+\newcommand{\Nstyle}[1]{
+    \lstdefinestyle{N#1}{
+        style=#1,
+        %%%%%
+        numbers=left
+    }
+}
+
+\newcommand{\tbFstyle}[1]{
+    \lstdefinestyle{tbF#1}{
+        style=#1,
+        %%%%%
+        frame=tb
+    }
+}
+
+\newcommand{\Fstyle}[1]{
+    \lstdefinestyle{F#1}{
+        style=#1,
+        %%%%%
+        frame=single,
+        framesep=0em,
+        rulesep=0em,
+        xleftmargin=0.75em,
+        xrightmargin=0.75em,
+        framexleftmargin=0.75em,
+        framexrightmargin=0.75em,
+        framextopmargin=0.5em,
+        framexbottommargin=0.5em,
+        %%%%%
+        numbersep=1.25em
+    }
+}
+
+\newcommand{\NtbFstyle}[1]{
+    \tbFstyle{#1}
+    \Nstyle{tbF#1}
+}
+
+\newcommand{\NFstyle}[1]{
+    \Fstyle{#1}
+    \lstdefinestyle{NF#1}{
+        style=f#1,
+        %%%%%
+        xleftmargin=2.75em,
+        framexleftmargin=2.75em,
+        %%%%%
+        numbers=left,
+        numbersep=1em
+    }
+}
+
+%%%%% Styles
+
+\lstdefinestyle{default}{
+    breaklines=true,
+    breakatwhitespace=true,
+    columns=fixed,
+	extendedchars=true,
+    upquote=true,
+	tabsize=4,
+    %%%%%
+    framerule=0.66pt,
+    captionpos=b,
+	%%%%%
+    basicstyle=\footnotesize\ttfamily,
+    numberstyle=\footnotesize\ttfamily,
+    showstringspaces=false
+}
+\Nstyle{default}
+\NFstyle{default}
+\NtbFstyle{default}
+
+\lstdefinestyle{monokai}{
+    style=Fdefault,
+    %%%%%
+    backgroundcolor=\color[HTML]{272822},
+    framerule=0em,
+    %%%%%
+    basicstyle=\footnotesize\ttfamily\color[HTML]{f8f8f2},
+    numberstyle=\footnotesize\ttfamily\color[HTML]{272822},
+    commentstyle=\color[HTML]{75715e},
+    keywordstyle=[1]{\color[HTML]{f92672}},
+    keywordstyle=[2]{\color[HTML]{A6E22E}},
+    keywordstyle=[3]{\color[HTML]{ae81ff}},
+    stringstyle=\color[HTML]{e6db74},
+    %%%%%
+    % otherkeywords={!,.,+,-,*,/,=,<,>,^,|,\&,OR,AND}
+}
+
+\lstdefinestyle{Nmonokai}{
+    style=monokai,
+    %%%%%
+    xleftmargin=2.75em,
+    framexleftmargin=2.75em,
+    %%%%%
+    numbers=left,
+    numberstyle=\footnotesize\ttfamily\color[HTML]{f8f8f2},
+    numbersep=1em
+}
+
+\lstdefinestyle{c}{
+    language=C,
+    style=default,
+    %%%%%
+    commentstyle=\color[HTML]{228B22},
+    keywordstyle=\color[HTML]{0000FF},
+    stringstyle=\color[HTML]{A020F0},
+    emphstyle=\color[HTML]{0000FF},
+    %%%%%
+    emph={}
+}
+
+\lstdefinestyle{cpp}{
+    language=C++,
+    style=default,
+    %%%%%
+    commentstyle=\color[HTML]{228B22},
+    keywordstyle=\color[HTML]{0000FF},
+    stringstyle=\color[HTML]{A020F0},
+    emphstyle=\color[HTML]{0000FF},
+    %%%%%
+    emph={std}
+}
+
+\lstdefinestyle{matlab}{
+    language=matlab,
+    style=default,
+    %%%%%
+    basicstyle=\footnotesize\fontfamily{pcr}\selectfont,
+    numberstyle=\footnotesize\fontfamily{pcr}\selectfont,
+    commentstyle=\color[HTML]{228B22},
+    keywordstyle=\color[HTML]{0000FF},
+    stringstyle=\color[HTML]{A020F0},
+    emphstyle=\color[HTML]{0000FF},
+    %%%%%
+    emph={clearvars}
+}
+
+\lstdefinestyle{python}{
+    language=python,
+    style=default,
+    %%%%%
+    commentstyle=\color[RGB]{221,0,0},
+    keywordstyle=[1]{\color[RGB]{255,119,0}},
+    keywordstyle=[2]{\color[RGB]{144,0,144}},
+    stringstyle=\color[RGB]{0,170,0},
+    emphstyle=\color[RGB]{255,119,0},
+    %%%%%
+    emph={}
+}
+
+\lstdefinestyle{java}{
+    language=java,
+    style=default,
+    %%%%%
+    commentstyle=\color[HTML]{228B22},
+    keywordstyle=\color[HTML]{0000FF},
+    stringstyle=\color[HTML]{A020F0},
+    emphstyle=\color[HTML]{0000FF},
+    %%%%%
+    emph={}
+}
