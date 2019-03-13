@@ -1,7 +1,6 @@
 %%%%%%%%%% Packages
 
-\usepackage[squaren,Gray,cdot]{SIunits}
-\usepackage{sistyle}
+\usepackage{siunitx}
 
 %%%%%%%%%% Features
 
@@ -9,5 +8,5 @@
 
 \ifx\decimalsign\undefined
 \else
-    \SIdecimalsign{\decimalsign}
+    \sisetup{output-decimal-marker = \decimalsign}
 \fi

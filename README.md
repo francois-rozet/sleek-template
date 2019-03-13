@@ -68,6 +68,8 @@ It is not mandatory to include them. Precisely, it's a better habit to include o
 
 > Since it is the core of this template, `default` library should always be included.
 
+> `bibliography` library has to be included before `default`.
+
 ## Languages
 
 To set the languages of the document, the `\languages` variable has to be defined **before** the call to the `default` library.
