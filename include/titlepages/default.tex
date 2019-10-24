@@ -1,13 +1,13 @@
 \newgeometry{margin = 2.5cm}
 \makeatletter
 \begin{titlepage}
-	\begin{minipage}[t][0.425\textheight][t]{\textwidth}
+	\begin{minipage}[t][0.4125\textheight]{\textwidth}
 		\begin{center}
 		    \ifx\toptitle\undefined
-    		    \vfill
     		    \ifx\logopath\undefined
     		    \else
-    			    \includegraphics[height=0.2125\textheight]{\logopath}
+    		    	\vfill
+    			    \includegraphics[height=0.15\textheight]{\logopath}
     			\fi
     		\else
     		    \ifx\logopath\undefined
@@ -29,16 +29,15 @@
 			\end{center}
 		\end{mdframed}
 		\hspace{0.5em}
+		\ifx\subtitle\undefined
+		\else
+		\begin{center}
+			{\LARGE \subtitle}
+		\end{center}
+		\fi
 	\end{minipage}
 	\vfill
-	\begin{minipage}[b][0.425\textheight][t]{\textwidth}
-			\ifx\subtitle\undefined
-			\else
-			    \vspace{-0.5em}
-			    \begin{center}
-				    {\LARGE \subtitle}
-				\end{center}
-			\fi
+	\begin{minipage}[b][0.4125\textheight][t]{\textwidth}
 			\vfill
 			\ifx\rightauthor\undefined
 			    \begin{center}
