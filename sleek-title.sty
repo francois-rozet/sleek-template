@@ -1,0 +1,67 @@
+\ProvidesPackage{sleek-title}[2019/01/27 v.01 Sleek Titlepage]
+
+%%%%%%%%%% Require
+
+\RequirePackage{geometry}
+\RequirePackage{graphicx}
+\RequirePackage[framemethod=TikZ]{mdframed}
+
+%%%%%%%%%% Titlepage
+
+\newif\ifLogo
+\newif\ifInstitute
+\newif\ifSubtitle
+\newif\ifContext
+
+\newcommand*{\logo}[1]{\gdef\@logo{#1}\global\Logotrue}
+\newcommand*{\institute}[1]{\gdef\@institute{#1}\global\Institutetrue}
+\newcommand*{\subtitle}[1]{\gdef\@subtitle{#1}\global\Subtitletrue}
+\newcommand*{\context}[1]{\gdef\@context{#1}\global\Contexttrue}
+
+\renewcommand*{\maketitle}{%
+	\newgeometry{margin = 2.5cm}
+	\begin{titlepage}
+		\begin{minipage}[t][0.4125\textheight]{\textwidth}
+			\begin{center}
+				\ifLogo
+					\includegraphics[height=0.15\textheight]{\@logo}
+				\fi
+				\vfill
+				\ifInstitute
+					{\scshape\huge\@institute\unskip\strut\par}
+					\vfill
+				\fi
+			\end{center}
+		\end{minipage}
+		\vfill
+		\begin{minipage}{\textwidth}
+			\hspace{0.5em}
+			\begin{mdframed}[linewidth = 2pt, innertopmargin = 1em, innerbottommargin = 1em, leftline = false, rightline = false]
+				\begin{center}
+					{\bfseries\huge\@title\unskip\strut\par}
+				\end{center}
+			\end{mdframed}
+			\ifSubtitle
+				\hspace{0.5em}
+				\begin{center}
+					{\LARGE\@subtitle\unskip\strut\par}
+				\end{center}
+			\fi
+		\end{minipage}
+		\vfill
+		\begin{minipage}[b][0.4125\textheight][t]{\textwidth}
+			\begin{center}
+				\vfill
+				{\large\@author\unskip\strut\par}
+				\vfill
+				\ifContext
+					{\large\@context\par}
+				\fi
+				{\large\@date\par}
+			\end{center}
+		\end{minipage}
+	\end{titlepage}
+	\restoregeometry
+}
+
+\endinput

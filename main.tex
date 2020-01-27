@@ -1,34 +1,38 @@
 \documentclass[a4paper, 12pt]{report}
 
-\def\languages{french, english}
+%%%%%%%%%%%%%%%%%%% Packages
 
-%%%%%%%%%%%%%%%%%%% Libraries
-
-\input{./include/libraries/default.tex}
-\input{./include/libraries/mathematics.tex}
-\input{./include/libraries/units.tex}
+\usepackage[english]{babel}
+\usepackage{sleek}
+\usepackage{sleek-title}
 
 %%%%%%%%%%%%%%%%%%% Titlepage
 
-\def\logopath{./resources/pdf/logo.pdf}
-\def\toptitle{Random University}
+\logo{./resources/pdf/logo.pdf}
+\institute{Random University}
 \title{A sleek \LaTeX{} template}
-%\def\subtitle{}
-\def\authorhead{Author}
-\author{François \textsc{Rozet}\\}
-%\def\rightauthorhead{}
-%\def\rightauthor{}
-%\def\context{}
+%\subtitle{}
+\author{François \textsc{Rozet}}
+%\context{}
 \date{\today}
+
+%%%%%%%%%%%%%%%%%%% Bibliography
+
+\addbibresource{./resources/bib/references.bib}
 
 %%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-	\input{./include/titlepages/default.tex}
+	\maketitle
 	\romantableofcontents
+	
 	\part{Part}
 	\chapter{Chapter}
 	\section{Section}
 	\subsection{Subsection}
 	\subsubsection{Subsubsection}
+
+	\nocite{einstein}
+    \nocite{knuthwebsite}
+	\printbibliography
 \end{document}

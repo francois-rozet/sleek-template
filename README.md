@@ -1,89 +1,46 @@
 # Sleek Template
 
-Sleek Template is a modular LaTeX template.
+Sleek Template is a collection of LaTeX packages and settings that ease the writing of beautiful documents.
 
-It splits in three main parts : `main.tex`, [title pages](#title-pages) and [libraries](#libraries).
+All packages, settings, environments, commands and macros are explained and illustrated in the [wiki](https://github.com/Donshel/sleek-template/wiki). There is also a bunch of cool stuff like LaTeX tutorials and examples. Have a look !
 
-## Main
+## Options
 
-`main.tex` is the actual `tex` file of the document where is written the `document` environment.
+The `sleek` package has three options :
+
+* `parindent` restores the indentation of paragraphs' first line.
+* `noheader` removes the document header.
+* `french` changes the decimal sign and some captions.
 
 ```latex
-\begin{document}
-...
-\end{document}
+\usepackage[parindent, french]{sleek}
 ```
 
-It is `main.tex` that should be compiled in order to produce a `pdf` or a `dvi`.
-
-## Title pages
+## Title page
 
 The title page is included as first command in the `document` environment.
 
 ```latex
 \begin{document}
-\input{./include/titlepages/default.tex}
+\maketitle
 ...
 \end{document}
 ```
 
-> Sleek Template offers a `default` title page. However, feel free to add your own.
-
-#### Default
-
-The `default` title page creates the cover page of the document according to the filling of the followings above the `document` environment.
+Sleek Template offers a modified title page in the package `sleek-title`. The title page presents the following informations :
 
 ```latex
-\def\logopath{}
-\def\toptitle{}
+\logo{}
+\institute{}
 \title{}
-\def\subtitle{}
-\def\authorhead{}
+\subtitle{}
 \author{}
-\def\rightauthorhead{}
-\def\rightauthor{}
-\def\context{}
+\context{}
 \date{}
 ```
 
-Among these, only `\title{}`, `\author{}` and `\date{}` have to be filled in for the code to figure out what to output. However, none of these should stay empty. Prefer deleting or commenting the line if so.
+Among these, only `\title{}`, `\author{}` and `\date{}` have to be filled. However, none of these should stay empty. Prefer deleting or commenting the line if so.
 
-## Libraries
-
-The [libraries](./include/libraries/) are included in `main.tex` before the `document` environment.
-
-```latex
-\input{./include/libraries/default.tex}
-\input{./include/libraries/mathematics.tex}
-\input{./include/libraries/units.tex}
-...
-\begin{document}
-```
-
-Each library calls a few packages which are essential in their field. Some also modify style settings or configure new environments, commands or macros.
-
-> These features are explained and illustrated in the [wiki](https://github.com/Donshel/sleek-template/wiki). There is also a bunch of cool stuff like LaTeX tutorials and examples. Have a look !
-
-It is not mandatory to include them. Precisely, it's a better habit to include only needed libraries.
-
-> Since it is the core of this template, `default` library should always be included.
-
-> `bibliography` library has to be included before `default`.
-
-## Languages
-
-To set the languages of the document, the `\languages` variable has to be defined **before** the call to the `default` library.
-
-```latex
-\def\languages{vietnamese, japanese, danish}
-...
-\input{./include/libraries/default.tex}
-```
-
-If not, languages will be set to `english` by default. It should be noted that the actual language of the document is defined by the last name of the chain, `danish` in the example.
-
-If the actual language owns its own file in the [languages](./include/languages/) folder, this one will be automatically included. Therefore it can be used to modify further settings depending on the language.
-
-## Authors
+## Author
 
 * **François Rozet** - [Donshel](https://github.com/Donshel)

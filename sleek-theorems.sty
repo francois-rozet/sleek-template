@@ -1,19 +1,17 @@
-%%%%%%%%%% Packages
+\ProvidesPackage{sleek-theorems}[2019/01/27 v.01 Sleek Theorems]
 
-\usepackage{amsthm}
-\usepackage{thmtools}
+%%%%%%%%%% Require
 
-%%%%%%%%%% Features
+\RequirePackage{amsthm}
+\RequirePackage{thmtools}
+\RequirePackage[framemethod=TikZ]{mdframed}
 
-%%%%% Settings
+%%%%%%%%%% Setup
 
-\makeatletter
 \define@key{thmdef}{mdthm}[{}]{
 	\thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
-\makeatother
 
 \begingroup
-\makeatletter
 \@for\theoremstyle:=plain,definition,remark\do{
 	\expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{
 		\addtolength\thm@preskip\parskip
@@ -21,31 +19,45 @@
 }
 \endgroup
 
+% qedsymbol
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
 % language
+\def\lgthm{Theorem}
+\def\lgprf{Proof}
+\def\lglem{Lemma}
+\def\lgprop{Proposition}
+\def\lgdefn{Definition}
+\def\lghyp{Hypothesis}
+\def\lgmeth{Method}
+\def\lgquest{Question}
+\def\lgansw{Answer}
+\def\lgexpl{Example}
+\def\lgrmk{Remark}
+\def\lgnote{Note}
+\def\lgtip{Tip}
 
-\ifx\lgthm\undefined
-	\def\lgthm{Theorem}
-	\def\lgprf{Proof}
-	\def\lglem{Lemma}
+\DeclareOption{french}{
+	\def\lgthm{Théorème}
+	\def\lgprf{Preuve}
+	\def\lglem{Lemme}
 	\def\lgprop{Proposition}
-	\def\lgdefn{Definition}
-	\def\lghyp{Hypothesis}
-	\def\lgmeth{Method}
+	\def\lgdefn{Définition}
+	\def\lghyp{Hypothèse}
+	\def\lgmeth{Méthode}
 	\def\lgquest{Question}
-	\def\lgansw{Answer}
-	\def\lgexpl{Example}
-	\def\lgrmk{Remark}
+	\def\lgansw{Réponse}
+	\def\lgexpl{Exemple}
+	\def\lgrmk{Remarque}
 	\def\lgnote{Note}
-	\def\lgtip{Tip}
-\fi
+	\def\lgtip{Conseil}
+}
 
-%%%%% Commands
+%%%%%%%%%% Commands
 
 \newcommand\qedadd{\pushQED{\qed}\popQED}
 
-%%%%% Environments
+%%%%%%%%%% Environments
 
 \theoremstyle{plain}
 \newtheorem{thm}{\lgthm}
@@ -65,7 +77,7 @@
 \newtheorem*{note}{\lgnote}
 \newtheorem*{tip}{\lgtip}
 
-% framed
+%%%%% Framed
 
 \mdfdefinestyle{thicc}{
 	nobreak=true,
@@ -89,8 +101,12 @@
 
 \declaretheorem[mdthm={style=thicc, linecolor=black!20!green!20, frametitlebackgroundcolor=black!20!green!20}, sibling=defn, name=\lgdefn]{frameddefn}
 \declaretheorem[mdthm={style=thicc, linecolor=blue!20, frametitlebackgroundcolor=blue!20}, sibling=hyp, name=\lghyp]{framedhyp}
-\declaretheorem[mdthm={style=thicc}, name=\lgmeth]{framedmeth}
+\declaretheorem[mdthm={style=thicc, nobreak=false}, name=\lgmeth]{framedmeth}
 \declaretheorem[mdthm={style=thicc, linecolor=orange!20, frametitlebackgroundcolor=orange!20}, sibling=quest, name=\lgquest]{framedquest}
 
 \declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=answ, name=\lgansw]{framedansw}
 \declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=expl, name=\lgexpl]{framedexpl}
+
+\ProcessOptions\relax
+
+\endinput
