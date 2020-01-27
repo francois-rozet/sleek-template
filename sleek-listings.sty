@@ -10,15 +10,15 @@
 %%%%% Commands
 
 \newcommand{\NumberStyle}[1]{
-	\lstdefinestyle{Number#1}{
+	\lstdefinestyle{#1Number}{
 		style=#1,
 		%%%%%
 		numbers=left
 	}
 }
 
-\newcommand{\tbFrameStyle}[1]{
-	\lstdefinestyle{tbFrame#1}{
+\newcommand{\FrameTBStyle}[1]{
+	\lstdefinestyle{#1FrameTB}{
 		style=#1,
 		%%%%%
 		frame=tb
@@ -26,7 +26,7 @@
 }
 
 \newcommand{\FrameStyle}[1]{
-	\lstdefinestyle{Frame#1}{
+	\lstdefinestyle{#1Frame}{
 		style=#1,
 		%%%%%
 		frame=single,
@@ -43,15 +43,15 @@
 	}
 }
 
-\newcommand{\NumbertbFrameStyle}[1]{
-	\tbFrameStyle{#1}
-	\NumberStyle{tbFrame#1}
+\newcommand{\NumberFrameTBStyle}[1]{
+	\FrameTBStyle{#1}
+	\NumberStyle{#1FrameTB}
 }
 
 \newcommand{\NumberFrameStyle}[1]{
 	\FrameStyle{#1}
-	\lstdefinestyle{NumberFrame#1}{
-		style=Frame#1,
+	\lstdefinestyle{#1FrameNumber}{
+		style=#1Frame,
 		%%%%%
 		xleftmargin=2.75em,
 		framexleftmargin=2.75em,
@@ -81,7 +81,7 @@
 
 \NumberStyle{default}
 \NumberFrameStyle{default}
-\NumbertbFrameStyle{default}
+\NumberFrameTBStyle{default}
 
 \lstdefinestyle{monokai}{
 	style=Framedefault,
@@ -100,7 +100,7 @@
 	% otherkeywords={!,.,+,-,*,/,=,<,>,^,|,\&,OR,AND}
 }
 
-\lstdefinestyle{Numbermonokai}{
+\lstdefinestyle{monokaiNumber}{
 	style=monokai,
 	%%%%%
 	xleftmargin=2.75em,
