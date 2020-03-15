@@ -43,4 +43,4 @@ Among these, only `\title{}`, `\author{}` and `\date{}` have to be filled. Howev
 
 ## Author
 
-* **François Rozet** - [Donshel](https://github.com/Donshel)
+* **François Rozet** - [francois-rozet](https://github.com/francois-rozet)
