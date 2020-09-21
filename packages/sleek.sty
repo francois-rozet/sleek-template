@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2019/01/27 v.01 Sleek Package]
+\ProvidesPackage{sleek}[2020/09/21 v.02 Sleek Package]
 
 %%%%%%%%%% Require
 
@@ -23,7 +23,12 @@
 
 %%%%% Links
 
-\RequirePackage[pdfusetitle]{hyperref}
+\RequirePackage[
+	pdfusetitle,
+	colorlinks=true,
+	linktoc=page,
+	urlcolor=blue
+]{hyperref}
 
 %%%%% Mathematics
 
@@ -55,8 +60,19 @@
 	backend=biber,
 	style=numeric-comp,
 	sorting=none,
-	maxbibnames=99
+	maxbibnames=99,
+	backref=true
 ]{biblatex}
+
+\DefineBibliographyStrings{english}{
+	backrefpage = {page},
+	backrefpages = {pages}
+}
+
+\DefineBibliographyStrings{french}{
+	backrefpage = {page},
+	backrefpages = {pages}
+}
 
 %%%%%%%%%% Options
 
