@@ -1,58 +1,95 @@
-\ProvidesPackage{sleek-title}[2019/01/27 v.01 Sleek Titlepage]
+\ProvidesPackage{sleek-title}[2020/10/26 v.02 Sleek Titlepage]
 
 %%%%%%%%%% Require
 
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
 \RequirePackage[framemethod=TikZ]{mdframed}
+\RequirePackage[nomessages]{fp}
 
 %%%%%%%%%% Titlepage
 
+\newcommand*{\clearpar}{\unskip\par} % or \unskip\strut\par
+
+\newcommand*{\countlines}[1]{
+	\setbox0\vbox{
+		\noindent{#1}\par
+		\count@\z@
+		\loop
+		\unskip\unpenalty\unskip\unpenalty\unskip
+		\setbox0\lastbox
+		\ifvoid0
+		   \xdef\numlines{\the\count@}
+		\else
+		   \advance\count@\@ne
+		\repeat
+	}
+}
+
+\newcommand*{\adjustheight}{
+	\countlines{\bfseries\huge\@title}
+	\FPeval{\miniheight}{0.435 - 0.02 * (\numlines - 1)}
+}
+
 \newif\ifLogo
 \newif\ifInstitute
+\newif\ifFaculty
+\newif\ifDepartment
 \newif\ifSubtitle
+\newif\ifSupervisor
 \newif\ifContext
 
 \newcommand*{\logo}[1]{\gdef\@logo{#1}\global\Logotrue}
 \newcommand*{\institute}[1]{\gdef\@institute{#1}\global\Institutetrue}
+\newcommand*{\faculty}[1]{\gdef\@faculty{#1}\global\Facultytrue}
+\newcommand*{\department}[1]{\gdef\@department{#1}\global\Departmenttrue}
 \newcommand*{\subtitle}[1]{\gdef\@subtitle{#1}\global\Subtitletrue}
+\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}\global\Supervisortrue}
 \newcommand*{\context}[1]{\gdef\@context{#1}\global\Contexttrue}
 
 \renewcommand*{\maketitle}{%
+	\adjustheight
 	\newgeometry{margin = 2.5cm}
 	\begin{titlepage}
-		\begin{minipage}[t][0.4125\textheight]{\textwidth}
+		\begin{minipage}[t][\miniheight\textheight]{\textwidth}
 			\begin{center}
 				\ifLogo
 					\includegraphics[height=0.15\textheight]{\@logo}
 				\fi
 				\vfill
-				\ifInstitute
-					{\scshape\huge\@institute\unskip\strut\par}
-					\vfill
-				\fi
+				{\scshape\ifInstitute\LARGE\@institute\fi\ifFaculty\\[0.125em]\Large\@faculty\fi\ifDepartment\\[0.25em]\large\@department\fi\clearpar}
+				\vfill
 			\end{center}
 		\end{minipage}
 		\vfill
 		\begin{minipage}{\textwidth}
-			\hspace{0.5em}
-			\begin{mdframed}[linewidth = 2pt, innertopmargin = 1em, innerbottommargin = 1em, leftline = false, rightline = false]
+			\begin{mdframed}[linewidth=2pt, innertopmargin=1.5em, innerbottommargin=1.5em, leftline=false, rightline=false]
 				\begin{center}
-					{\bfseries\huge\@title\unskip\strut\par}
+					{\bfseries\huge\@title\clearpar}
 				\end{center}
 			\end{mdframed}
-			\ifSubtitle
-				\hspace{0.5em}
-				\begin{center}
-					{\LARGE\@subtitle\unskip\strut\par}
-				\end{center}
-			\fi
 		\end{minipage}
 		\vfill
-		\begin{minipage}[b][0.4125\textheight][t]{\textwidth}
+		\begin{minipage}[b][\miniheight\textheight][t]{\textwidth}
 			\begin{center}
+				\ifSubtitle
+					\begin{center}
+						{\Large\@subtitle\clearpar}
+					\end{center}
+				\fi
 				\vfill
-				{\large\@author\unskip\strut\par}
+				\ifSupervisor
+					\begin{minipage}[t]{0.49\textwidth}
+						{\large\@author\clearpar}
+					\end{minipage}
+					\begin{minipage}[t]{0.49\textwidth}
+						\begin{flushright}
+							{\large\@supervisor\clearpar}
+						\end{flushright}
+					\end{minipage}
+				\else
+					{\large\@author\clearpar}
+				\fi
 				\vfill
 				\ifContext
 					{\large\@context\par}

@@ -32,9 +32,12 @@ Sleek Template offers a modified title page in the package `sleek-title`. The ti
 ```latex
 \logo{}
 \institute{}
+\faculty{}
+\department{}
 \title{}
 \subtitle{}
 \author{}
+\supervisor{}
 \context{}
 \date{}
 ```
