@@ -9,13 +9,13 @@
 %%%%%%%%%% Setup
 
 \define@key{thmdef}{mdthm}[{}]{
-	\thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
+    \thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
 
 \begingroup
 \@for\theoremstyle:=plain,definition,remark\do{
-	\expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{
-		\addtolength\thm@preskip\parskip
-	}
+    \expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{
+        \addtolength\thm@preskip\parskip
+    }
 }
 \endgroup
 
@@ -38,19 +38,19 @@
 \def\lgtip{Tip}
 
 \DeclareOption{french}{
-	\def\lgthm{Théorème}
-	\def\lgprf{Preuve}
-	\def\lglem{Lemme}
-	\def\lgprop{Proposition}
-	\def\lgdefn{Définition}
-	\def\lghyp{Hypothèse}
-	\def\lgmeth{Méthode}
-	\def\lgquest{Question}
-	\def\lgansw{Réponse}
-	\def\lgexpl{Exemple}
-	\def\lgrmk{Remarque}
-	\def\lgnote{Note}
-	\def\lgtip{Conseil}
+    \def\lgthm{Théorème}
+    \def\lgprf{Preuve}
+    \def\lglem{Lemme}
+    \def\lgprop{Proposition}
+    \def\lgdefn{Définition}
+    \def\lghyp{Hypothèse}
+    \def\lgmeth{Méthode}
+    \def\lgquest{Question}
+    \def\lgansw{Réponse}
+    \def\lgexpl{Exemple}
+    \def\lgrmk{Remarque}
+    \def\lgnote{Note}
+    \def\lgtip{Conseil}
 }
 
 %%%%%%%%%% Commands
@@ -80,18 +80,18 @@
 %%%%% Framed
 
 \mdfdefinestyle{thicc}{
-	nobreak=true,
-	skipabove=\topskip,
-	skipbelow=\topskip,
-	innerleftmargin=0.5em,
-	innerrightmargin=0.5em,
-	innerbottommargin=0.5em,
-	innertopmargin=0.5em,
-	linewidth=0.25em,
-	roundcorner=0.15em,
-	linecolor=black!10,
-	frametitlebackgroundcolor=black!10,
-	theoremseparator={.}
+    nobreak=true,
+    skipabove=\topskip,
+    skipbelow=\topskip,
+    innerleftmargin=0.5em,
+    innerrightmargin=0.5em,
+    innerbottommargin=0.5em,
+    innertopmargin=0.5em,
+    linewidth=0.25em,
+    roundcorner=0.15em,
+    linecolor=black!10,
+    frametitlebackgroundcolor=black!10,
+    theoremseparator={.}
 }
 
 \declaretheorem[mdthm={style=thicc, linecolor=red!20, frametitlebackgroundcolor=red!20}, sibling=thm, name=\lgthm]{framedthm}
