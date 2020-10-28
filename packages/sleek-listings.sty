@@ -1,11 +1,18 @@
-\ProvidesPackage{sleek-listings}[2020/10/27 v.02 Sleek Listings]
+\ProvidesPackage{sleek-listings}[2020/10/28 v1.0 Sleek Listings]
 
-%%%%%%%%%% Require
+%%%%%%%%%%%%%%%%
+% Requirements %
+%%%%%%%%%%%%%%%%
 
 \RequirePackage{inconsolata}
 \RequirePackage{listings}
+\RequirePackage{xcolor}
 
-%%%%%%%%%% Setup
+%%%%%%%%%%%%
+% Settings %
+%%%%%%%%%%%%
+
+% Colors
 
 \def\ForestGreen{\color[HTML]{228B22}}
 \def\TrueBlue{\color[HTML]{0000FF}}
@@ -16,21 +23,15 @@
 \def\DarkMagenta{\color[HTML]{900090}}
 \def\IslamicGreen{\color[HTML]{00AA00}}
 
-%%%%% Commands
+%%%%%%%%%%%%
+% Commands %
+%%%%%%%%%%%%
 
 \newcommand{\NumberStyle}[1]{
     \lstdefinestyle{#1Number}{
         style=#1,
         %%%%%
         numbers=left
-    }
-}
-
-\newcommand{\FrameTBStyle}[1]{
-    \lstdefinestyle{#1FrameTB}{
-        style=#1,
-        %%%%%
-        frame=tb
     }
 }
 
@@ -46,9 +47,20 @@
         framexleftmargin=0.75em,
         framexrightmargin=0.75em,
         framextopmargin=0.5em,
-        framexbottommargin=0.5em,
+        framexbottommargin=0.5em
+    }
+}
+
+\newcommand{\FrameTBStyle}[1]{
+    \FrameStyle{#1}
+    \lstdefinestyle{#1FrameTB}{
+        style=#1Frame,
         %%%%%
-        numbersep=1.25em
+        frame=tb,
+        xleftmargin=0em,
+        xrightmargin=0em,
+        framexleftmargin=0em,
+        framexrightmargin=0em
     }
 }
 
@@ -70,7 +82,9 @@
     }
 }
 
-%%%%% Styles
+%%%%%%%%%%
+% Styles %
+%%%%%%%%%%
 
 \lstdefinestyle{default}{
     breaklines=true,
@@ -80,13 +94,17 @@
     upquote=true,
     tabsize=4,
     %%%%%
-    framerule=0.66pt,
+    framerule=0.1em,
     captionpos=b,
+    aboveskip=\baselineskip,
+    belowskip=\smallskipamount,
     %%%%%
     basicstyle=\footnotesize\ttfamily,
     numberstyle=\footnotesize\ttfamily,
     showstringspaces=false
 }
+
+\lstset{style=default}
 
 \NumberStyle{default}
 \FrameNumberStyle{default}
@@ -168,7 +186,7 @@
     stringstyle=\IslamicGreen,
     emphstyle=\SafetyOrange,
     %%%%%
-    emph={}
+    emph={as}
 }
 
 \lstdefinestyle{java}{

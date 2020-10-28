@@ -1,17 +1,23 @@
-\ProvidesPackage{sleek-title}[2020/10/26 v.02 Sleek Titlepage]
+\ProvidesPackage{sleek-title}[2020/10/28 v1.0 Sleek Titlepage]
 
-%%%%%%%%%% Require
+%%%%%%%%%%%%%%%%
+% Requirements %
+%%%%%%%%%%%%%%%%
 
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
 \RequirePackage[framemethod=TikZ]{mdframed}
 \RequirePackage[nomessages]{fp}
 
-%%%%%%%%%% Titlepage
+%%%%%%%%%%%%
+% Commands %
+%%%%%%%%%%%%
+
+% Auxiliary commands
 
 \newcommand*{\clearpar}{\unskip\par} % or \unskip\strut\par
 
-\newcommand*{\countlines}[1]{
+\newcommand*{\countlines}[1]{ % saves the number of lines of #1 in \numlines
     \setbox0\vbox{
         \noindent{#1}\par
         \count@\z@
@@ -26,10 +32,12 @@
     }
 }
 
-\newcommand*{\adjustheight}{
+\newcommand*{\adjustheight}{ % saves the height of the top and bottom mini-pages in \miniheight
     \countlines{\bfseries\huge\@title}
     \FPeval{\miniheight}{0.435 - 0.02 * (\numlines - 1)}
 }
+
+% Custom fields
 
 \newif\ifLogo
 \newif\ifInstitute
@@ -47,6 +55,10 @@
 \newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}\global\Supervisortrue}
 \newcommand*{\context}[1]{\gdef\@context{#1}\global\Contexttrue}
 
+%%%%%%%%%%%%%%
+% Title-page %
+%%%%%%%%%%%%%%
+
 \renewcommand*{\maketitle}{%
     \adjustheight
     \newgeometry{margin = 2.5cm}
@@ -57,7 +69,7 @@
                     \includegraphics[height=0.15\textheight]{\@logo}
                 \fi
                 \vfill
-                {\scshape\ifInstitute\LARGE\@institute\fi\ifFaculty\\[0.125em]\Large\@faculty\fi\ifDepartment\\[0.25em]\large\@department\fi\clearpar}
+                {\scshape\ifInstitute\LARGE\@institute\fi\ifFaculty\ifInstitute\\[0.125em]\fi\Large\@faculty\fi\ifDepartment\\[0.25em]\large\@department\fi\clearpar}
                 \vfill
             \end{center}
         \end{minipage}

@@ -1,14 +1,16 @@
-\ProvidesPackage{sleek}[2020/10/27 v.03 Sleek Package]
+\ProvidesPackage{sleek}[2020/10/28 v1.0 Sleek Package]
 
-%%%%%%%%%% Require
+%%%%%%%%%%%%%%%%
+% Requirements %
+%%%%%%%%%%%%%%%%
 
-%%%%% Encoding
+% Encoding
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{eurosym}
 
-%%%%% Style
+% Style
 
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
@@ -19,9 +21,9 @@
 
 \RequirePackage{enumitem}
 \RequirePackage{csquotes}
-\RequirePackage{color}
+\RequirePackage{xcolor}
 
-%%%%% Links
+% Links
 
 \RequirePackage[
     pdfusetitle,
@@ -30,31 +32,31 @@
     urlcolor=blue
 ]{hyperref}
 
-%%%%% Mathematics
+% Mathematics
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{bm}
 \RequirePackage{esint}
-\RequirePackage[makeroom]{cancel}
 
-%%%%% Units
+% Units
 
 \RequirePackage{siunitx}
 
-%%%%% Figures
+% Figures
 
 \RequirePackage{float}
 \RequirePackage[skip=1em]{caption}
 \RequirePackage{subcaption}
 
-%%%%% Arrays
+% Arrays
 
 \RequirePackage{array}
+\RequirePackage{booktabs}
 \RequirePackage{multirow}
 \RequirePackage{multicol}
 
-%%%%% Bibliography
+% Bibliography
 
 \RequirePackage[
     backend=biber,
@@ -64,25 +66,17 @@
     backref=true
 ]{biblatex}
 
-\DefineBibliographyStrings{english}{
-    backrefpage = {page},
-    backrefpages = {pages}
-}
+%%%%%%%%%%%%
+% Settings %
+%%%%%%%%%%%%
 
-\DefineBibliographyStrings{french}{
-    backrefpage = {page},
-    backrefpages = {pages}
-}
-
-%%%%%%%%%% Options
-
-%%%%% Parindent
+% Parindent
 
 \DeclareOption{parindent}{
     \restoreparindent
 }
 
-%%%%% Style
+% Style
 
 \geometry{top=3.5cm,bottom=2.5cm,right=2.5cm,left=2.5cm}
 
@@ -97,13 +91,48 @@
     \newgeometry{margin=2.5cm}
 }
 
-%%%%% Arrays
+% Arrays
 
-\renewcommand{\arraystretch}{1.2}
+\renewcommand{\arraystretch}{1.1}
 
-%%%%% Table of contents
+% Bibliography
 
-\newcommand{\romantableofcontents}{
+\DefineBibliographyStrings{english}{
+    backrefpage = {page},
+    backrefpages = {pages}
+}
+
+\DefineBibliographyStrings{french}{
+    backrefpage = {page},
+    backrefpages = {pages}
+}
+
+% Languages
+
+\DeclareOption{french}{
+    %% Lists
+    \frenchbsetup{StandardLists=true}
+
+    %% Units
+    \sisetup{output-decimal-marker=,}
+
+    %% Captions
+    \addto\captionsfrench{\def\figurename{Figure}}
+    \addto\captionsfrench{\def\tablename{Table}}
+    \addto\captionsfrench{\def\proofname{Preuve}}
+
+    %% Macros
+    \def\cad{c.-à-d.}
+    \def\Cad{C.-à-d.}
+}
+
+%%%%%%%%%%%%
+% Commands %
+%%%%%%%%%%%%
+
+% Table of contents
+
+\newcommand{\romantableofcontents}{ % creates a table of contents with roman (i, ii, iii, ...) numbering of the pages
     \newpage
     \pagenumbering{roman}
     \tableofcontents
@@ -111,40 +140,21 @@
     \pagenumbering{arabic}
 }
 
-%%%%% Mathematics
+% Mathematics
 
-\newcommand{\rbk}[1]{\left(#1\right)}
-\newcommand{\cbk}[1]{\left\{#1\right\}}
-\newcommand{\sbk}[1]{\left[#1\right]}
-\newcommand{\abs}[1]{\left|#1\right|}
-\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\rbk}[1]{\left(#1\right)} % round brackets (parentheses)
+\newcommand{\cbk}[1]{\left\{#1\right\}} % curly brackets {braces}
+\newcommand{\sbk}[1]{\left[#1\right]} % square brackets [brackets]
+\newcommand{\abs}[1]{\left|#1\right|} % absolute value |x|
+\newcommand{\norm}[1]{\left\|#1\right\|} % norm ||x||
 
-\newcommand{\fact}[1]{#1!}
-\newcommand{\deriv}{\mathrm{d}}
-\DeclareMathOperator{\tr}{tr}
+\newcommand{\fact}[1]{#1!} % factorial x!
+\newcommand{\diff}{\mathrm{d}} % upright 'd' for differential
+\DeclareMathOperator{\tr}{tr} % trace
 
-%%%%% Figures
+% Figures
 
-\newcommand{\noskipcaption}[1]{\caption{#1}\vspace{-1em}}
-
-%%%%% Languages
-
-\DeclareOption{french}{
-    %%%%% Lists
-    \frenchbsetup{StandardLists=true}
-
-    %%%%% Units
-    \sisetup{output-decimal-marker=,}
-
-    %%%%% Captions
-    \addto\captionsfrench{\def\figurename{Figure}}
-    \addto\captionsfrench{\def\tablename{Table}}
-    \addto\captionsfrench{\def\proofname{Preuve}}
-
-    %%%%% Macros
-    \def\cad{c.-à-d.}
-    \def\Cad{C.-à-d.}
-}
+\newcommand{\noskipcaption}[1]{\caption{#1}\vspace{-1em}} % caption without additional vertical space
 
 \ProcessOptions\relax
 

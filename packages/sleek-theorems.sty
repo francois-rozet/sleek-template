@@ -1,15 +1,22 @@
-\ProvidesPackage{sleek-theorems}[2019/01/27 v.01 Sleek Theorems]
+\ProvidesPackage{sleek-theorems}[2020/10/28 v1.0 Sleek Theorems]
 
-%%%%%%%%%% Require
+%%%%%%%%%%%%%%%%
+% Requirements %
+%%%%%%%%%%%%%%%%
 
 \RequirePackage{amsthm}
 \RequirePackage{thmtools}
 \RequirePackage[framemethod=TikZ]{mdframed}
 
-%%%%%%%%%% Setup
+%%%%%%%%%%%%
+% Settings %
+%%%%%%%%%%%%
+
+% Setup
 
 \define@key{thmdef}{mdthm}[{}]{
-    \thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
+    \thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}
+}
 
 \begingroup
 \@for\theoremstyle:=plain,definition,remark\do{
@@ -19,10 +26,13 @@
 }
 \endgroup
 
-% qedsymbol
-\renewcommand{\qedsymbol}{$\blacksquare$}
+% QED symbol
 
-% language
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand\qedadd{\pushQED{\qed}\popQED}
+
+% Languages
+
 \def\lgthm{Theorem}
 \def\lgprf{Proof}
 \def\lglem{Lemma}
@@ -53,11 +63,11 @@
     \def\lgtip{Conseil}
 }
 
-%%%%%%%%%% Commands
+%%%%%%%%%%%%%%%%
+% Environments %
+%%%%%%%%%%%%%%%%
 
-\newcommand\qedadd{\pushQED{\qed}\popQED}
-
-%%%%%%%%%% Environments
+% Environments
 
 \theoremstyle{plain}
 \newtheorem{thm}{\lgthm}
@@ -77,7 +87,7 @@
 \newtheorem*{note}{\lgnote}
 \newtheorem*{tip}{\lgtip}
 
-%%%%% Framed
+% Framed environments
 
 \mdfdefinestyle{thicc}{
     nobreak=true,
