@@ -44,10 +44,12 @@
     stringstyle=\VeronicaPurple,
     emphstyle=\TrueBlue,
     %%%%%
-    emph={LaTeX, usepackage, textit, textbf, textsc, title, date, author}
+    emph={LaTeX, usepackage, textit, textbf, textsc}
 }
 
 \FrameTBStyle{latex}
+
+\def\tbs{\textbackslash}
 
 %%%%%%%%%%%%
 % Document %
@@ -58,68 +60,66 @@
     \romantableofcontents
 
     \chapter{Introduction}
-    
-    Sleek Template is a minimal collection of \LaTeX{} packages and settings that ease the writing of beautiful documents. While originally meant for theses, it is perfectly suitable for project reports, articles, syntheses, etc. -- with a few adjustments, though.
-    
+
+    Sleek Template is a minimal collection of \LaTeX{} packages and settings that ease the writing of beautiful documents. While originally meant for theses, it is perfectly suitable for project reports, articles, syntheses, etc. -- with a few adjustments, like margins.
+
     It is composed of four separate packages -- \texttt{sleek}, \texttt{sleek-title}, \texttt{sleek-theorems} and \texttt{sleek-listings} -- each of which can be used individually.
-    
+
     \begin{lstlisting}[style=latexFrameTB, caption={Example of Sleek Template packages usage.}, gobble=8]
         \usepackage[english]{babel}
         \usepackage[noheader]{packages/sleek}
         \usepackage{packages/sleek-title}
     \end{lstlisting}
-    \vspace{-1em}
-    
+
+    \blindfootnote{If you are a \LaTeX{} beginner consider the excellent \href{https://www.overleaf.com/learn}{Overleaf tutorial}. Also, there are a lot of symbols available in \LaTeX{} and, therefore, in this template. I recommend the use of \enquote{The Comprehensive \LaTeX{} Symbol List} \cite{pakin2020comprehensive} for searching symbols.}
+
+    \chapter{Features}
+
     \section{\texttt{sleek}}
 
     \texttt{sleek} is the main package. It imports the packages (\emph{cf.} Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use.
-    
+
     There are three available options to the \texttt{sleek} package :
-    
+
     \begin{enumerate}[noitemsep]
         \item \texttt{parindent} add indentation to the first line of paragraphs;
         \item \texttt{noheader} removes the document header;
-        \item \texttt{french} changes the decimal sign to a comma and translates some captions.     
+        \item \texttt{french} changes the decimal sign to a comma and translates some captions.
     \end{enumerate}
-    
+
     But nothing prevents you to tweak the settings to your liking in the source code.
-    
-    \begin{note}
-        If you are a \LaTeX{} beginner consider the excellent \href{https://www.overleaf.com/learn}{Overleaf tutorial}. Also, there are a lot of symbols available in \LaTeX{} and, therefore, in this template. I recommend the use of \enquote{The Comprehensive \LaTeX{} Symbol List} \cite{pakin2020comprehensive} for searching symbols.
-    \end{note}
-    
+
     \subsection{Mathematics}
-    
+
     This template uses \texttt{amsmath} and \texttt{amssymb}, which are the de-facto standard for typesetting mathematics. Additionally, \texttt{esint} provides alternative integral symbols (\emph{cf.} Table 78 in \cite{pakin2020comprehensive}) and \texttt{bm} is used for bold math symbols like vectors (see \eqref{eq:gauss_law}).
-    
-    A few custom macros have also been added such as \texttt{\textbackslash{}rbk}, \texttt{\textbackslash{}sbk} and \texttt{\textbackslash{}cbk} for respectively round, square and curly brackets, \texttt{\textbackslash{}abs} for absulute value, \texttt{\textbackslash{}norm} for norm, and \texttt{\textbackslash{}fact} for factorial and \texttt{\textbackslash{}diff} for up-right differential.
+
+    A few custom macros have also been added such as \texttt{\tbs{}rbk}, \texttt{\tbs{}sbk} and \texttt{\tbs{}cbk} for respectively round, square and curly brackets, \texttt{\tbs{}abs} for absulute value, \texttt{\tbs{}norm} for norm, \texttt{\tbs{}fact} for factorial and \texttt{\tbs{}diff} for up-right differential.
     $$
         \rbk{\frac{\pi}{2}}, \quad \sbk{\frac{\pi}{2}}, \quad \cbk{\frac{\pi}{2}}, \quad \abs{\frac{\pi}{2}}, \quad \norm{\frac{\pi}{2}}, \quad \fact{n} = \prod_{i = 1}^{n} i, \quad \frac{\diff \bm{x}}{\diff t} = \bm{v}
     $$
-    
-    
+
     Here are some examples showcasing what is possible with the default packages of \texttt{sleek}.
-    
+
     \begin{equation}\label{eq:gauss_law}
         \oiint_S \bm{E} \cdot \diff \bm{s} = \iiint_V \frac{\rho}{\varepsilon_0} \diff V
     \end{equation}
-    
+
     \begin{equation*}
         e = \sum_{n=0}^\infty \frac{1}{n!}
     \end{equation*}
-    
+
     \begin{subequations}
         \begin{align}
             \frac{\diff x}{\diff t} & = \alpha x - \beta xy \\
             \frac{\diff y}{\diff t} & = \delta xy - \gamma y
         \end{align}
     \end{subequations}
-    
+
     \begin{align*}
-        \frac{\diff}{\diff x} \ln x & = \frac{1}{\abs{x}} \\
+        \ln \abs{x} + C & = \int \frac{1}{x} \,\diff x \\
         \exp(x) & = \lim_{n \to \infty} \rbk{1 + \frac{x}{n}}^n
     \end{align*}
-    
+
     \begin{equation}
         \left\{
         \begin{aligned}
@@ -129,50 +129,50 @@
         \end{aligned}
         \right.
     \end{equation}
-    
+
     \begin{alignat*}{2}
                               & & P(A, B)  & = P(A \mid B) P(B)                        \\
         \Leftrightarrow \quad & & P(A \mid B) & = \frac{P(A, B)}{P(B)}                 \\
                               & &          & = P(B \mid A) \frac{P(A)}{P(B)}
     \end{alignat*}
-    
+
     \subsection{Units}
-    
-    The \texttt{siunitx} package provides three commands to typeset numbers and quantities -- \texttt{\textbackslash{}num}, \texttt{\textbackslash{}si} and \texttt{\textbackslash{}SI} -- as well as various units (\emph{cf.} Table \ref{tab:siunitx_units}).
-    
-    It is possible to write numbers without units (\emph{e.g.} \num{1}, \num{1.0}, \num{-1}, \num{3.14159}, \num{e100}, \num{6.022e23}), units without quantity (\emph{e.g.} \si{\joule}, \si{\newton\meter}, \si{\kilogram\meter\squared\per\second\squared}) and, finally, quantities with their units (\emph{e.g.} \SI{9.81}{\meter\per\second\squared}, \SI{299.6e6}{\meter\per\second}).
-    
+
+    The \texttt{siunitx} package provides three commands to typeset numbers and quantities -- \texttt{\tbs{}num}, \texttt{\tbs{}si} and \texttt{\tbs{}SI} -- as well as various units (\emph{cf.} Table \ref{tab:siunitx_units}).
+
+    It is possible to write, both in text or math modes, numbers without units (\emph{e.g.} \num{1}, \num{1.0}, \num{-1}, \num{3.14159}, \num{e100}, $N_A = \num{6.022e23}$), units without quantity (\emph{e.g.} $\si{\joule} = \si{\newton\meter} = \si{\kilogram\meter\squared\per\second\squared}$) and, finally, quantities with their units (\emph{e.g.} \SI{9.81}{\meter\per\second\squared}, $c = \SI{299.6e6}{\meter\per\second}$).
+
     \subsection{Lists}
-    
+
     Sleek Template uses \texttt{enumitem} to enhance the listing capabilities of \LaTeX{}. There are three lists environments :
     \begin{enumerate}
         \item \texttt{itemize} for unordered lists;
         \item \texttt{enumerate} for ordered lists;
         \item \texttt{description} for descriptive lists.
     \end{enumerate}
-    
-    In a list, each element is preceded by the command \texttt{\textbackslash{}item}. It is possible to modify the labels
+
+    In a list, each element is preceded by the command \texttt{\tbs{}item}. It is possible to modify the labels
     \begin{itemize}
-        \item individually with \texttt{\textbackslash{}item[newLabel]};
+        \item individually with \texttt{\tbs{}item[newLabel]};
         \item for the whole environment with the \texttt{label=newLabel} option.
     \end{itemize}
-    
-    In the case of \texttt{enumerate}, \texttt{newLabel} can contain special expressions (\emph{cf.} Table \ref{tab:enumerate_special_expressions}) that will adapt to the item number. For example, \texttt{label=(\textbackslash{}alph*)} defines the label sequence \enquote{(a), (b), (c), ...}. Still in the case of \texttt{enumerate}, the  \texttt{\textbackslash{}setcounter} and \texttt{\textbackslash{}addtocounter} commands allow to modify the current item number.
-    
-    One could also want to reduce the space between items with the \texttt{noitemsep} option or to delete the left margin with the \texttt{leftmargin=*} option.
-    
+
+    In the case of \texttt{enumerate}, \texttt{newLabel} can contain special expressions (\emph{cf.} Table \ref{tab:enumerate_special_expressions}) that will adapt to the item number. For example, \texttt{label=(\tbs{}alph*)} defines the label sequence \enquote{(a), (b), (c), ...}. Still in the case of \texttt{enumerate}, the  \texttt{\tbs{}setcounter} and \texttt{\tbs{}addtocounter} commands allow to modify the current item number.
+
+    One could want to reduce the space between items with the \texttt{noitemsep} option or to delete the left margin with the \texttt{leftmargin=*} option.
+
     It is also possible to write nested lists. Here follows a very condensed example.
-    
+
     \begin{itemize}[leftmargin=*]
         \item Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        
+
         Arcu ac tortor dignissim convallis aenean et tortor. In eu mi bibendum neque egestas congue quisque.
-        
+
         \item[$+$] Semper quis lectus nulla at volutpat diam ut. Felis eget velit aliquet sagittis id. Blandit aliquam etiam erat velit scelerisque in dictum non consectetur.
         \begin{equation}
             a^2 + b^2 = c^2
         \end{equation}
-        
+
         \item Nibh sed pulvinar proin gravida hendrerit lectus. Pretium aenean pharetra magna ac placerat vestibulum lectus mauris. Non consectetur a erat nam at lectus urna duis.
         \begin{enumerate}[noitemsep, label=\roman*.]
             \item Nibh tortor id aliquet lectus. Sit amet justo donec enim diam vulputate ut pharetra sit.
@@ -181,29 +181,29 @@
             \addtocounter{enumi}{15}
             \item Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra.
         \end{enumerate}
-        
+
         \item Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus.
             \begin{description}
                 \item[Ridiculus] mus mauris vitae ultricies leo. Mollis aliquam ut porttitor leo a diam. Velit egestas dui id ornare arcu odio ut sem nulla.
                 \item[Nullam vehicula] ipsum a arcu. Nibh sit amet commodo nulla facilisi nullam. At erat pellentesque adipiscing commodo elit. Libero volutpat sed cras ornare arcu dui.
             \end{description}
     \end{itemize}
-    
+
     \subsection{Figures}
-    
-    Thanks to the \texttt{graphicx} package, it is possible to include external graphic documents (images, plots, etc.) in your document with the \texttt{\textbackslash{}includegraphics} command. Most image type format (\texttt{jpg}, \texttt{png}, \texttt{bmp}, etc.) are supported by this command. However, it should be noted that it is highly preferable to use vectorial types, such as \texttt{pdf} or \texttt{eps}.
-    
+
+    Thanks to the \texttt{graphicx} package, it is possible to include external graphic documents (images, plots, etc.) in your document with the \texttt{\tbs{}includegraphics} command. Most image type format (\texttt{jpg}, \texttt{png}, \texttt{bmp}, etc.) are supported by this command. However, it should be noted that it is highly preferable to use vectorial types, such as \texttt{pdf} or \texttt{eps}.
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\textwidth]{resources/pdf/logo.pdf}
         \noskipcaption{Random University logo.}
         \label{fig:random_university_logo}
     \end{figure}
-    
+
     \subsection{Tables}
-    
+
     The packages \texttt{multicol} and \texttt{multirow} comes handy for complex table formatting such as multi-column or multi-row cells.
-    
+
     \begin{table}[H]
         \centering
         \begin{tabular}{|r|r|c|l|}
@@ -215,7 +215,7 @@
         \caption{Example of multi-column cells.}
         \label{tab:multicol_example}
     \end{table}
-    
+
     \begin{table}[H]
         \centering
         \begin{tabular}{|l|c|r|}
@@ -232,13 +232,13 @@
     \newpage
 
     \section{\texttt{sleek-title}}
-    
-    Sleek Template offers a custom title-page in the package \texttt{sleek-title}. The formatting of the title-page is automatically inferred from the fields that the user has provided.
-    
-    The fields are \texttt{\textbackslash{}logo}, \texttt{\textbackslash{}institute}, \texttt{\textbackslash{}faculty}, \texttt{\textbackslash{}department}, \texttt{\textbackslash{}title}, \texttt{\textbackslash{}subtitle}, \texttt{\textbackslash{}author}, \texttt{\textbackslash{}supervisor}, \texttt{\textbackslash{}context} and \texttt{\textbackslash{}date}.
-    
-    Among these, only \texttt{\textbackslash{}title}, \texttt{\textbackslash{}author} and \texttt{\textbackslash{}date} have to be provided. However, none of the fields should stay empty. Prefer deleting or commenting the line if so.
-    
+
+    Sleek Template offers a custom title-page with the package \texttt{sleek-title}. The formatting of the title-page is automatically inferred from the fields that the user has provided.
+
+    The fields are \texttt{\tbs{}logo}, \texttt{\tbs{}institute}, \texttt{\tbs{}faculty}, \texttt{\tbs{}department}, \texttt{\tbs{}title}, \texttt{\tbs{}subtitle}, \texttt{\tbs{}author}, \texttt{\tbs{}supervisor}, \texttt{\tbs{}context} and \texttt{\tbs{}date}.
+
+    Among these, only \texttt{\tbs{}title}, \texttt{\tbs{}author} and \texttt{\tbs{}date} have to be provided. However, none of the fields should stay empty. Prefer deleting or commenting the line if so.
+
     \begin{lstlisting}[style=latexFrameTB, caption={Example of \texttt{sleek-title} title-page definition.}, gobble=8]
         \logo{./resources/pdf/logo.pdf}
         \institute{Random University}
@@ -251,24 +251,25 @@
         %\context{Well, I was bored...}
         \date{\today}
     \end{lstlisting}
-    \vspace{-1em}
-    
+
+    It is also possible to use Sleek Template without \texttt{sleek-title}, in which case the default \LaTeX{} title-page will be used.
+
     \newpage
-    
+
     \section{\texttt{sleek-theorems}}
-    
+
     \texttt{sleek-theorems} is based on the \texttt{amsthm} and \texttt{thmtools} packages. It provides a handful of theorem-like environments, each of which have different style and purpose.
-    
+
     The environments are \texttt{thm} (theorem), \texttt{lem} (lemma), \texttt{prop} (proposition), \texttt{proof}, \texttt{defn} (definition), \texttt{hyp} (hypothesis), \texttt{meth} (method), \texttt{quest} (question), \texttt{answ} (answer), \texttt{expl} (example), \texttt{rmk} (remark), \texttt{note} and \texttt{tip}.
-    
+
     \begin{note}
         The option \texttt{french} translates the name of each provided environment. It is also possible, and easy, to add your own language as an option in the source code.
     \end{note}
-    
+
     \begin{thm}[Triangle inequality]
         Let be a triangle in Euclidean space. Then the sum of the lengths of two of its sides always surpass or equals the length of the third.
     \end{thm}
-    
+
     \begin{proof}
         Let $a$, $b$ and $c$ be the lengths of the sides of a triangle in Euclidean space and $\alpha$, $\beta$, $\gamma$ their respective opposite angle. By the generalized Pythagoras' theorem, we have
         \begin{alignat*}{2}
@@ -279,13 +280,13 @@
         \end{alignat*}
         Therefore in any triangle, the sum of the lengths of two sides always surpass or equals the length of the third.
     \end{proof}
-    
+
     In addition, these environments also have framed versions -- \texttt{framedthm}, \texttt{framedlem}, etc. -- for readability.
-    
+
     \begin{framedthm}[Triangle inequality]\label{thm:Triangle inequality}
         Let be a triangle in Euclidean space. Then the sum of the lengths of two of its sides always surpass or equals the length of the third.
     \end{framedthm}
-    
+
     \begin{framedprf}
         Let $a$, $b$ and $c$ be the lengths of the sides of a triangle in Euclidean space and $\alpha$, $\beta$, $\gamma$ their respective opposite angle. By the generalized Pythagoras' theorem, we have
         \begin{alignat*}{2}
@@ -296,65 +297,65 @@
         \end{alignat*}
         Therefore in any triangle, the sum of the lengths of two sides always surpass or equals the length of the third. \qedadd
     \end{framedprf}
-    
+
     \begin{framedquest*}
         Based on the theorem \ref{thm:Triangle inequality}, what is the shortest path from a point $A$ to a point $B$ in Euclidean geometry ?
     \end{framedquest*}
-    
+
     \newpage
-    
+
     \section{\texttt{sleek-listings}}
-    
+
     The \texttt{sleek-listings} package is a small collection of styles for the environments of the \texttt{listings} package, which is useful to showcase nicely samples of code.
-    
+
     Currently, the basic styles \texttt{default} and \texttt{monokai} are implemented. The former is a neutral style (no line numbering, no frame, only good old black code) while the latter is an all-framed style reproducing the iconic \href{https://monokai.nl/}{Monokai} color-map.
-    
+
     In addition, the language styles \texttt{c}, \texttt{cpp}, \texttt{matlab}, \texttt{python} and \texttt{java} are implemented, with basic color-maps.
-    
+
     Finally, some commands to build upon existing styles are provided :
-    
+
     \begin{itemize}
-        \item \texttt{\textbackslash{}NumberStyle\{stylename\}} creates a style \texttt{stylenameNumber} with line numbering;
-        \item \texttt{\textbackslash{}FrameStyle\{stylename\}} creates a style \texttt{stylenameFrame} with an all around frame;
-        \item \texttt{\textbackslash{}FrameTBStyle\{stylename\}} creates a style \texttt{stylenameFrameTB} with top and bottom line rules;
-        \item \texttt{\textbackslash{}FrameNumberStyle\{stylename\}} and \texttt{\textbackslash{}FrameTBNumberStyle\{stylename\}} have the same logic.
+        \item \texttt{\tbs{}NumberStyle\{stylename\}} creates a style \texttt{stylenameNumber} with line numbering;
+        \item \texttt{\tbs{}FrameStyle\{stylename\}} creates a style \texttt{stylenameFrame} with an all around frame;
+        \item \texttt{\tbs{}FrameTBStyle\{stylename\}} creates a style \texttt{stylenameFrameTB} with top and bottom line rules;
+        \item \texttt{\tbs{}FrameNumberStyle\{stylename\}} and \texttt{\tbs{}FrameTBNumberStyle\{stylename\}} have the same logic.
     \end{itemize}
-    
-    For example, the \texttt{\textbackslash{}FrameTBStyle\{python\}} command creates the \texttt{pythonFrameTB} style, which can then be used to showcase \texttt{Python} code.
-    
+
+    For example, the \texttt{\tbs{}FrameTBStyle\{python\}} command creates the \texttt{pythonFrameTB} style, which can then be used to showcase \texttt{Python} code.
+
     \FrameTBStyle{python}
     \begin{lstlisting}[style=pythonFrameTB, gobble=4]
     import numpy as np # Unnecessary import
-    
+
     a, b = 69., .420
-    
+
     def f(a: float, b: float) -> float:
         r"""
         Sum two numbers
-        
+
         Parameters
         ----------
         a: first number
         b: second number
-        
+
         Returns
         -------
         the sum of 'a' and 'b'
         """
-        
+
         return a + b
-        
+
     c = f(a, b)
-    
+
     print('{:f} + {:f} equals {:f}'.format(a, b, c))
     \end{lstlisting}
 
     \printbibliography
-    
+
     \appendix
-    
+
     \chapter{Tables}
-    
+
     \begin{table}[h]
         \centering
         \begin{tabular}{ll}
@@ -380,10 +381,10 @@
         \caption{List of the most relevant packages imported by Sleek Template.}
         \label{tab:sleek_relevant_packages}
     \end{table}
-    
+
     \begin{table}[h]
         \centering
-        \begin{tabular}{>{\ttfamily\textbackslash{}}ll}
+        \begin{tabular}{>{\ttfamily\tbs{}}ll}
             \toprule
             emph\{abcABC123\} & \emph{abcABC123} \\
             bfseries\{abcABC123\} & \bfseries{abcABC123} \\
@@ -405,10 +406,10 @@
         \caption{Available text fonts in \LaTeX{}.}
         \label{tab:text_fonts}
     \end{table}
-    
+
     \begin{table}[h]
         \centering
-        \begin{tabular}{>{\ttfamily\$\textbackslash{}}l<{\$}l}
+        \begin{tabular}{>{\ttfamily\$\tbs{}}l<{\$}l}
             \toprule
             mathcal\{abcABC123\} & $\mathcal{abcABC123}$ \\
             mathit\{abcABC123\} & $\mathit{abcABC123}$ \\
@@ -421,7 +422,7 @@
         \caption{Available math fonts in \LaTeX{} and AMS.}
         \label{tab:math_fonts}
     \end{table}
-    
+
     \begin{table}[h]
         \centering
         \begin{tabular}{>{\ttfamily}lr|>{\ttfamily}lr|>{\ttfamily}lr}
@@ -457,18 +458,18 @@
         \caption{Available units in the \texttt{siunitx} package.}
         \label{tab:siunitx_units}
     \end{table}
-    
+
     \begin{table}[h]
         \centering
         \begin{tabular}{ll}
             \toprule
             \textbf{Expression} & \textbf{Description} \\
             \midrule
-            \texttt{\textbackslash{}arabic*} & Arabic numbers (1, 2, 3, ...) \\
-            \texttt{\textbackslash{}alph*} & Lowercase letters (a, b, c, ...) \\
-            \texttt{\textbackslash{}Alph*} & Uppercase letters (A, B, C, ...) \\
-            \texttt{\textbackslash{}roman*} & Lowercase Roman numerals (i, ii, iii, ...) \\
-            \texttt{\textbackslash{}Roman*} & Lowercase Roman numerals (I, II, III, ...) \\
+            \texttt{\tbs{}arabic*} & Arabic numbers (1, 2, 3, ...) \\
+            \texttt{\tbs{}alph*} & Lowercase letters (a, b, c, ...) \\
+            \texttt{\tbs{}Alph*} & Uppercase letters (A, B, C, ...) \\
+            \texttt{\tbs{}roman*} & Lowercase Roman numerals (i, ii, iii, ...) \\
+            \texttt{\tbs{}Roman*} & Lowercase Roman numerals (I, II, III, ...) \\
             \bottomrule
         \end{tabular}
         \caption{Special expressions for the label of \texttt{enumerate} environments.}

@@ -1,6 +1,6 @@
 # Sleek Template
 
-Sleek Template is a minimal collection of [LaTeX](https://www.latex-project.org/) packages and settings that ease the writing of beautiful documents. While originally meant for theses, it is perfectly suitable for project reports, articles, syntheses, etc. - with a few adjustments, though.
+Sleek Template is a minimal collection of [LaTeX](https://www.latex-project.org/) packages and settings that ease the writing of beautiful documents. While originally meant for theses, it is perfectly suitable for project reports, articles, syntheses, etc. – with a few adjustments, like margins.
 
 It is composed of four separate packages – `sleek`, `sleek-title`, `sleek-theorems` and `sleek-listings` – each of which can be used individually.
 
