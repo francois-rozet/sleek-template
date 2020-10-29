@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2020/10/28 v1.0 Sleek Package]
+\ProvidesPackage{sleek}[2020/10/29 v1.01 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -29,7 +29,7 @@
     pdfusetitle,
     colorlinks=true,
     linktoc=page,
-    urlcolor=blue
+    allcolors=blue
 ]{hyperref}
 
 % Mathematics
@@ -155,6 +155,12 @@
 % Figures
 
 \newcommand{\noskipcaption}[1]{\caption{#1}\vspace{-1em}} % caption without additional vertical space
+
+% Footnotes
+
+\makeatletter
+\def\blindfootnote{\gdef\@thefnmark{}\@footnotetext} % footnote without number
+\makeatother
 
 \ProcessOptions\relax
 
