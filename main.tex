@@ -93,7 +93,7 @@
 
     This template uses \texttt{amsmath} and \texttt{amssymb}, which are the de-facto standard for typesetting mathematics. Additionally, \texttt{esint} provides alternative integral symbols (\emph{cf.} Table 78 in \cite{pakin2020comprehensive}) and \texttt{bm} is used for bold math symbols like vectors (see \eqref{eq:gauss_law}).
 
-    A few custom macros have also been added such as \texttt{\tbs{}rbk}, \texttt{\tbs{}sbk} and \texttt{\tbs{}cbk} for respectively round, square and curly brackets, \texttt{\tbs{}abs} for absulute value, \texttt{\tbs{}norm} for norm, \texttt{\tbs{}fact} for factorial and \texttt{\tbs{}diff} for up-right differential.
+    A few custom macros have also been added such as \texttt{\tbs{}rbk}, \texttt{\tbs{}sbk} and \texttt{\tbs{}cbk} for respectively round, square and curly brackets, \texttt{\tbs{}abs} for absolute value, \texttt{\tbs{}norm} for norm, \texttt{\tbs{}fact} for factorial and \texttt{\tbs{}diff} for up-right differential.
     $$
         \rbk{\frac{\pi}{2}}, \quad \sbk{\frac{\pi}{2}}, \quad \cbk{\frac{\pi}{2}}, \quad \abs{\frac{\pi}{2}}, \quad \norm{\frac{\pi}{2}}, \quad \fact{n} = \prod_{i = 1}^{n} i, \quad \frac{\diff \bm{x}}{\diff t} = \bm{v}
     $$
@@ -260,15 +260,15 @@
 
     \texttt{sleek-theorems} is based on the \texttt{amsthm} and \texttt{thmtools} packages. It provides a handful of theorem-like environments, each of which have different style and purpose.
 
-    The environments are \texttt{thm} (theorem), \texttt{lem} (lemma), \texttt{prop} (proposition), \texttt{proof}, \texttt{defn} (definition), \texttt{hyp} (hypothesis), \texttt{meth} (method), \texttt{quest} (question), \texttt{answ} (answer), \texttt{expl} (example), \texttt{rmk} (remark), \texttt{note} and \texttt{tip}.
+    The environments are \texttt{theorem}, \texttt{lemma}, \texttt{proposition}, \texttt{proof}, \texttt{definition}, \texttt{hypothesis}, \texttt{method}, \texttt{question}, \texttt{answer}, \texttt{example}, \texttt{remark}, \texttt{note} and \texttt{tip}.
 
     \begin{note}
         The option \texttt{french} translates the name of each provided environment. It is also possible, and easy, to add your own language as an option in the source code.
     \end{note}
 
-    \begin{thm}[Triangle inequality]
+    \begin{theorem}[Triangle inequality]
         Let be a triangle in Euclidean space. Then the sum of the lengths of two of its sides always surpass or equals the length of the third.
-    \end{thm}
+    \end{theorem}
 
     \begin{proof}
         Let $a$, $b$ and $c$ be the lengths of the sides of a triangle in Euclidean space and $\alpha$, $\beta$, $\gamma$ their respective opposite angle. By the generalized Pythagoras' theorem, we have
@@ -278,16 +278,16 @@
                                   &  &     & \leq (a + b)^2               \\
             \Leftrightarrow \quad &  & c   & \leq a + b
         \end{alignat*}
-        Therefore in any triangle, the sum of the lengths of two sides always surpass or equals the length of the third.
+        Therefore in any triangle, the sum of the lengths of two sides always surpass or equals the length of the third. \qed
     \end{proof}
 
-    In addition, these environments also have framed versions -- \texttt{framedthm}, \texttt{framedlem}, etc. -- for readability.
+    In addition, these environments also have framed versions -- \texttt{fmd-theorem}, \texttt{fmd-lemma}, etc. -- for better encapsulation.
 
-    \begin{framedthm}[Triangle inequality]\label{thm:Triangle inequality}
+    \begin{fmd-theorem}[Triangle inequality]\label{thm:Triangle inequality}
         Let be a triangle in Euclidean space. Then the sum of the lengths of two of its sides always surpass or equals the length of the third.
-    \end{framedthm}
+    \end{fmd-theorem}
 
-    \begin{framedprf}
+    \begin{fmd-proof}
         Let $a$, $b$ and $c$ be the lengths of the sides of a triangle in Euclidean space and $\alpha$, $\beta$, $\gamma$ their respective opposite angle. By the generalized Pythagoras' theorem, we have
         \begin{alignat*}{2}
                                   &  & c^2 & = a^2 + b^2 - 2ab \cos\gamma \\
@@ -295,12 +295,12 @@
                                   &  &     & \leq (a + b)^2               \\
             \Leftrightarrow \quad &  & c   & \leq a + b
         \end{alignat*}
-        Therefore in any triangle, the sum of the lengths of two sides always surpass or equals the length of the third. \qedadd
-    \end{framedprf}
+        Therefore in any triangle, the sum of the lengths of two sides always surpass or equals the length of the third. \qed
+    \end{fmd-proof}
 
-    \begin{framedquest*}
+    \begin{fmd-question*}
         Based on the theorem \ref{thm:Triangle inequality}, what is the shortest path from a point $A$ to a point $B$ in Euclidean geometry ?
-    \end{framedquest*}
+    \end{fmd-question*}
 
     \newpage
 
@@ -386,21 +386,21 @@
         \centering
         \begin{tabular}{>{\ttfamily\tbs{}}ll}
             \toprule
-            emph\{abcABC123\} & \emph{abcABC123} \\
-            bfseries\{abcABC123\} & \bfseries{abcABC123} \\
-            itshape\{abcABC123\} & \itshape{abcABC123} \\
-            lowercase\{abcABC123\} & \lowercase{abcABC123} \\
-            normalfont\{abcABC123\} & \normalfont{abcABC123} \\
-            textbf\{abcABC123\} & \textbf{abcABC123} \\
-            textit\{abcABC123\} & \textit{abcABC123} \\
-            textsc\{abcABC123\} & \textsc{abcABC123} \\
-            textsf\{abcABC123\} & \textsf{abcABC123} \\
-            textsl\{abcABC123\} & \textsl{abcABC123} \\
-            textsubscript\{abcABC123\} & \textsubscript{abcABC123} \\
+            emph\{abcABC123\}            & \emph{abcABC123}            \\
+            bfseries\{abcABC123\}        & \bfseries{abcABC123}        \\
+            itshape\{abcABC123\}         & \itshape{abcABC123}         \\
+            lowercase\{abcABC123\}       & \lowercase{abcABC123}       \\
+            normalfont\{abcABC123\}      & \normalfont{abcABC123}      \\
+            textbf\{abcABC123\}          & \textbf{abcABC123}          \\
+            textit\{abcABC123\}          & \textit{abcABC123}          \\
+            textsc\{abcABC123\}          & \textsc{abcABC123}          \\
+            textsf\{abcABC123\}          & \textsf{abcABC123}          \\
+            textsl\{abcABC123\}          & \textsl{abcABC123}          \\
+            textsubscript\{abcABC123\}   & \textsubscript{abcABC123}   \\
             textsuperscript\{abcABC123\} & \textsuperscript{abcABC123} \\
-            texttt\{abcABC123\} & \texttt{abcABC123} \\
-            underline\{abcABC123\} & \underline{abcABC123} \\
-            uppercase\{abcABC123\} & \uppercase{abcABC123} \\
+            texttt\{abcABC123\}          & \texttt{abcABC123}          \\
+            underline\{abcABC123\}       & \underline{abcABC123}       \\
+            uppercase\{abcABC123\}       & \uppercase{abcABC123}       \\
             \bottomrule
         \end{tabular}
         \caption{Available text fonts in \LaTeX{}.}
@@ -411,12 +411,12 @@
         \centering
         \begin{tabular}{>{\ttfamily\$\tbs{}}l<{\$}l}
             \toprule
-            mathcal\{abcABC123\} & $\mathcal{abcABC123}$ \\
-            mathit\{abcABC123\} & $\mathit{abcABC123}$ \\
+            mathcal\{abcABC123\}    & $\mathcal{abcABC123}$ \\
+            mathit\{abcABC123\}     & $\mathit{abcABC123}$ \\
             mathnormal\{abcABC123\} & $\mathnormal{abcABC123}$ \\
-            mathrm\{abcABC123\} & $\mathrm{abcABC123}$ \\
-            mathbb\{abcABC123\} & $\mathbb{abcABC123}$ \\
-            mathfrak\{abcABC123\} & $\mathfrak{abcABC123}$ \\
+            mathrm\{abcABC123\}     & $\mathrm{abcABC123}$ \\
+            mathbb\{abcABC123\}     & $\mathbb{abcABC123}$ \\
+            mathfrak\{abcABC123\}   & $\mathfrak{abcABC123}$ \\
             \bottomrule
         \end{tabular}
         \caption{Available math fonts in \LaTeX{} and AMS.}
@@ -425,34 +425,34 @@
 
     \begin{table}[h]
         \centering
-        \begin{tabular}{>{\ttfamily}lr|>{\ttfamily}lr|>{\ttfamily}lr}
+        \begin{tabular}{>{\ttfamily\tbs{}}lr|>{\ttfamily\tbs{}}lr|>{\ttfamily}lr}
             \toprule
-            metre & \si{\metre} & second & \si{\second} & mole & \si{\mole} \\
-            meter & \si{\meter} & ampere & \si{\ampere} & candela & \si{\candela} \\
-            kilogram & \si{\kilogram} & kelvin & \si{\kelvin} &  &  \\
+            metre     & \si{\metre}     & second       & \si{\second}       & \tbs{}mole      & \si{\mole}      \\
+            meter     & \si{\meter}     & ampere       & \si{\ampere}       & \tbs{}candela   & \si{\candela}   \\
+            kilogram  & \si{\kilogram}  & kelvin       & \si{\kelvin}       &                 &                 \\
             \midrule
-            hertz & \si{\hertz} & farad & \si{\farad} & lumen & \si{\lumen} \\
-            newton & \si{\newton} & ohm & \si{\ohm} & lux & \si{\lux} \\
-            pascal & \si{\pascal} & siemens & \si{\siemens} & becquerel & \si{\becquerel} \\
-            joule & \si{\joule} & weber & \si{\weber} & gray & \si{\gray} \\
-            watt & \si{\watt} & tesla & \si{\tesla} & sievert & \si{\sievert} \\
-            coulomb & \si{\coulomb} & henry & \si{\henry} &  &  \\
-            volt & \si{\volt} & celsius & \si{\celsius} &  &  \\
+            hertz     & \si{\hertz}     & farad        & \si{\farad}        & \tbs{}lumen     & \si{\lumen}     \\
+            newton    & \si{\newton}    & ohm          & \si{\ohm}          & \tbs{}lux       & \si{\lux}       \\
+            pascal    & \si{\pascal}    & siemens      & \si{\siemens}      & \tbs{}becquerel & \si{\becquerel} \\
+            joule     & \si{\joule}     & weber        & \si{\weber}        & \tbs{}gray      & \si{\gray}      \\
+            watt      & \si{\watt}      & tesla        & \si{\tesla}        & \tbs{}sievert   & \si{\sievert}   \\
+            coulomb   & \si{\coulomb}   & henry        & \si{\henry}        &                 &                 \\
+            volt      & \si{\volt}      & celsius      & \si{\celsius}      &                 &                 \\
             \midrule
-            angstrom & \si{\angstrom} & day & \si{\day} & liter & \si{\liter} \\
-            arcminute & \si{\arcminute} & degree & \si{\degree} & litre & \si{\litre} \\
-            arcsecond & \si{\arcsecond} & electronvolt & \si{\electronvolt} & minute & \si{\minute} \\
-            barn & \si{\barn} & gram & \si{\gram} & neper & \si{\neper} \\
-            bar & \si{\bar} & hectare & \si{\hectare} & tonne & \si{\tonne} \\
-            bel & \si{\bel} & hour & \si{\hour} &  &  \\
+            angstrom  & \si{\angstrom}  & day          & \si{\day}          & \tbs{}liter     & \si{\liter}     \\
+            arcminute & \si{\arcminute} & degree       & \si{\degree}       & \tbs{}litre     & \si{\litre}     \\
+            arcsecond & \si{\arcsecond} & electronvolt & \si{\electronvolt} & \tbs{}minute    & \si{\minute}    \\
+            barn      & \si{\barn}      & gram         & \si{\gram}         & \tbs{}neper     & \si{\neper}     \\
+            bar       & \si{\bar}       & hectare      & \si{\hectare}      & \tbs{}tonne     & \si{\tonne}     \\
+            bel       & \si{\bel}       & hour         & \si{\hour}         &                 &                 \\
             \midrule
-            yocto & \si{\yocto} & milli & \si{\milli} & mega & \si{\mega} \\
-            zepto & \si{\zepto} & centi & \si{\centi} & giga & \si{\giga} \\
-            atto & \si{\atto} & deci & \si{\deci} & tera & \si{\tera} \\
-            femto & \si{\femto} & deca & \si{\deca} & peta & \si{\peta} \\
-            pico & \si{\pico} & deka & \si{\deka} & exa & \si{\exa} \\
-            nano & \si{\nano} & hecto & \si{\hecto} & zetta & \si{\zetta} \\
-            micro & \si{\micro} & kilo & \si{\kilo} & yotta & \si{\yotta} \\
+            yocto     & \si{\yocto}     & milli        & \si{\milli}        & \tbs{}mega      & \si{\mega}      \\
+            zepto     & \si{\zepto}     & centi        & \si{\centi}        & \tbs{}giga      & \si{\giga}      \\
+            atto      & \si{\atto}      & deci         & \si{\deci}         & \tbs{}tera      & \si{\tera}      \\
+            femto     & \si{\femto}     & deca         & \si{\deca}         & \tbs{}peta      & \si{\peta}      \\
+            pico      & \si{\pico}      & deka         & \si{\deka}         & \tbs{}exa       & \si{\exa}       \\
+            nano      & \si{\nano}      & hecto        & \si{\hecto}        & \tbs{}zetta     & \si{\zetta}     \\
+            micro     & \si{\micro}     & kilo         & \si{\kilo}         & \tbs{}yotta     & \si{\yotta}     \\
             \bottomrule
         \end{tabular}
         \caption{Available units in the \texttt{siunitx} package.}
@@ -466,10 +466,10 @@
             \textbf{Expression} & \textbf{Description} \\
             \midrule
             \texttt{\tbs{}arabic*} & Arabic numbers (1, 2, 3, ...) \\
-            \texttt{\tbs{}alph*} & Lowercase letters (a, b, c, ...) \\
-            \texttt{\tbs{}Alph*} & Uppercase letters (A, B, C, ...) \\
-            \texttt{\tbs{}roman*} & Lowercase Roman numerals (i, ii, iii, ...) \\
-            \texttt{\tbs{}Roman*} & Lowercase Roman numerals (I, II, III, ...) \\
+            \texttt{\tbs{}alph*}   & Lowercase letters (a, b, c, ...) \\
+            \texttt{\tbs{}Alph*}   & Uppercase letters (A, B, C, ...) \\
+            \texttt{\tbs{}roman*}  & Lowercase Roman numerals (i, ii, iii, ...) \\
+            \texttt{\tbs{}Roman*}  & Uppercase Roman numerals (I, II, III, ...) \\
             \bottomrule
         \end{tabular}
         \caption{Special expressions for the label of \texttt{enumerate} environments.}

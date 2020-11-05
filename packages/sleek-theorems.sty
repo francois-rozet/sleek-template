@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek-theorems}[2020/10/28 v1.0 Sleek Theorems]
+\ProvidesPackage{sleek-theorems}[2020/11/05 v1.01 Sleek Theorems]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -18,47 +18,38 @@
     \thmt@trytwice{\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}
 }
 
-\begingroup
-\@for\theoremstyle:=plain,definition,remark\do{
-    \expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{
-        \addtolength\thm@preskip\parskip
-    }
-}
-\endgroup
-
 % QED symbol
 
-\renewcommand{\qedsymbol}{$\blacksquare$}
-\newcommand\qedadd{\pushQED{\qed}\popQED}
+\renewcommand{\qedsymbol}{$\blacksquare$} % filled \qed
 
 % Languages
 
-\def\lgthm{Theorem}
-\def\lgprf{Proof}
-\def\lglem{Lemma}
-\def\lgprop{Proposition}
-\def\lgdefn{Definition}
-\def\lghyp{Hypothesis}
-\def\lgmeth{Method}
-\def\lgquest{Question}
-\def\lgansw{Answer}
-\def\lgexpl{Example}
-\def\lgrmk{Remark}
+\def\lgtheorem{Theorem}
+\def\lgproof{Proof}
+\def\lglemma{Lemma}
+\def\lgproposition{Proposition}
+\def\lgdefinition{Definition}
+\def\lghypothesis{Hypothesis}
+\def\lgmethod{Method}
+\def\lgquestion{Question}
+\def\lganswer{Answer}
+\def\lgexample{Example}
+\def\lgremark{Remark}
 \def\lgnote{Note}
 \def\lgtip{Tip}
 
 \DeclareOption{french}{
-    \def\lgthm{Théorème}
-    \def\lgprf{Preuve}
-    \def\lglem{Lemme}
-    \def\lgprop{Proposition}
-    \def\lgdefn{Définition}
-    \def\lghyp{Hypothèse}
-    \def\lgmeth{Méthode}
-    \def\lgquest{Question}
-    \def\lgansw{Réponse}
-    \def\lgexpl{Exemple}
-    \def\lgrmk{Remarque}
+    \def\lgtheorem{Théorème}
+    \def\lgproof{Preuve}
+    \def\lglemma{Lemme}
+    \def\lgproposition{Proposition}
+    \def\lgdefinition{Définition}
+    \def\lghypothesis{Hypothèse}
+    \def\lgmethod{Méthode}
+    \def\lgquestion{Question}
+    \def\lganswer{Réponse}
+    \def\lgexample{Exemple}
+    \def\lgremark{Remarque}
     \def\lgnote{Note}
     \def\lgtip{Conseil}
 }
@@ -70,20 +61,24 @@
 % Environments
 
 \theoremstyle{plain}
-\newtheorem{thm}{\lgthm}
-\newtheorem{lem}[thm]{\lglem}
-\newtheorem{prop}[thm]{\lgprop}
+\newtheorem{theorem}{\lgtheorem}
+\newtheorem{lemma}[theorem]{\lglemma}
+\newtheorem{proposition}[theorem]{\lgproposition}
 
 \theoremstyle{definition}
-\newtheorem{defn}{\lgdefn}
-\newtheorem{hyp}{\lghyp}
-\newtheorem{meth}{\lgmeth}
-\newtheorem{quest}{\lgquest}
+\newtheorem{definition}{\lgdefinition}
+\newtheorem{hypothesis}{\lghypothesis}
+\newtheorem{method}{\lgmethod}
+\newtheorem{question}{\lgquestion}
+
+\let\proof\relax % overwrite proof environment
+\let\endproof\relax
 
 \theoremstyle{remark}
-\newtheorem{answ}{\lgansw}[quest]
-\newtheorem{expl}{\lgexpl}
-\newtheorem*{rmk}{\lgrmk}
+\newtheorem{proof}{\lgproof}[theorem]
+\newtheorem{answer}{\lganswer}[question]
+\newtheorem{example}{\lgexample}
+\newtheorem*{remark}{\lgremark}
 \newtheorem*{note}{\lgnote}
 \newtheorem*{tip}{\lgtip}
 
@@ -104,18 +99,18 @@
     theoremseparator={.}
 }
 
-\declaretheorem[mdthm={style=thicc, linecolor=red!20, frametitlebackgroundcolor=red!20}, sibling=thm, name=\lgthm]{framedthm}
-\declaretheorem[mdthm={style=thicc, linecolor=red!20, frametitlebackgroundcolor=red!20}, sibling=thm, name=\lglem]{framedlem}
-\declaretheorem[mdthm={style=thicc, linecolor=blue!20, frametitlebackgroundcolor=blue!20}, sibling=thm, name=\lgprop]{framedprop}
-\declaretheorem[mdthm={style=thicc, nobreak=false}, parent=thm, name=\lgprf]{framedprf}
+\declaretheorem[mdthm={style=thicc, linecolor=red!20, frametitlebackgroundcolor=red!20}, sibling=theorem, name=\lgtheorem]{fmd-theorem}
+\declaretheorem[mdthm={style=thicc, linecolor=red!20, frametitlebackgroundcolor=red!20}, sibling=lemma, name=\lglemma]{fmd-lemma}
+\declaretheorem[mdthm={style=thicc, linecolor=blue!20, frametitlebackgroundcolor=blue!20}, sibling=proposition, name=\lgproposition]{fmd-proposition}
+\declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=proof, name=\lgproof]{fmd-proof}
 
-\declaretheorem[mdthm={style=thicc, linecolor=black!20!green!20, frametitlebackgroundcolor=black!20!green!20}, sibling=defn, name=\lgdefn]{frameddefn}
-\declaretheorem[mdthm={style=thicc, linecolor=blue!20, frametitlebackgroundcolor=blue!20}, sibling=hyp, name=\lghyp]{framedhyp}
-\declaretheorem[mdthm={style=thicc, nobreak=false}, name=\lgmeth]{framedmeth}
-\declaretheorem[mdthm={style=thicc, linecolor=orange!20, frametitlebackgroundcolor=orange!20}, sibling=quest, name=\lgquest]{framedquest}
+\declaretheorem[mdthm={style=thicc, linecolor=black!20!green!20, frametitlebackgroundcolor=black!20!green!20}, sibling=definition, name=\lgdefinition]{fmd-definition}
+\declaretheorem[mdthm={style=thicc, linecolor=blue!20, frametitlebackgroundcolor=blue!20}, sibling=hypothesis, name=\lghypothesis]{fmd-hypothesis}
+\declaretheorem[mdthm={style=thicc, nobreak=false}, name=\lgmethod]{fmd-method}
+\declaretheorem[mdthm={style=thicc, linecolor=orange!20, frametitlebackgroundcolor=orange!20}, sibling=question, name=\lgquestion]{fmd-question}
 
-\declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=answ, name=\lgansw]{framedansw}
-\declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=expl, name=\lgexpl]{framedexpl}
+\declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=answer, name=\lganswer]{fmd-answer}
+\declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=example, name=\lgexample]{fmd-example}
 
 \ProcessOptions\relax
 
