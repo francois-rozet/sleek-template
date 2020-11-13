@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2020/11/05 v1.02 Sleek Package]
+\ProvidesPackage{sleek}[2020/11/13 v1.03 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -25,7 +25,7 @@
 
 \RequirePackage{enumitem}
 \RequirePackage{csquotes}
-\RequirePackage{xcolor}
+\RequirePackage[dvipsnames]{xcolor}
 
 % Links
 
@@ -33,7 +33,7 @@
     pdfusetitle,
     colorlinks=true,
     linktoc=page,
-    allcolors=blue
+    allcolors=Blue
 ]{hyperref}
 
 % Mathematics
@@ -66,9 +66,15 @@
     backend=biber,
     style=numeric-comp,
     sorting=none,
+    maxcitenames=1,
     maxbibnames=99,
     backref=true
 ]{biblatex}
+
+\setlength\bibitemsep{0.25em}
+
+\DeclareFieldFormat*{title}{\enquote{#1}}
+\DeclareFieldFormat*{citetitle}{\enquote{#1}}
 
 %%%%%%%%%%%%
 % Settings %
