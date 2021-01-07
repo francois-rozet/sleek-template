@@ -77,7 +77,7 @@
 
     \section{\texttt{sleek}}
 
-    \texttt{sleek} is the main package. It imports the packages (\emph{cf.} Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use.
+    \texttt{sleek} is the main package. It imports the packages (\cf{} Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use.
 
     There are three available options to the \texttt{sleek} package :
 
@@ -91,7 +91,7 @@
 
     \subsection{Mathematics}
 
-    This template uses \texttt{amsmath} and \texttt{amssymb}, which are the de-facto standard for typesetting mathematics. Additionally, \texttt{esint} provides alternative integral symbols (\emph{cf.} Table 78 in \cite{pakin2020comprehensive}) and \texttt{bm} is used for bold math symbols like vectors (see \eqref{eq:gauss_law}).
+    This template uses \texttt{amsmath} and \texttt{amssymb}, which are the de-facto standard for typesetting mathematics. Additionally, \texttt{esint} provides alternative integral symbols (\cf{} Table 78 in \cite{pakin2020comprehensive}) and \texttt{bm} is used for bold math symbols like vectors (see \eqref{eq:gauss_law}).
 
     A few custom macros have also been added such as \texttt{\tbs{}rbk}, \texttt{\tbs{}sbk} and \texttt{\tbs{}cbk} for respectively round, square and curly brackets, \texttt{\tbs{}abs} for absolute value, \texttt{\tbs{}norm} for norm, \texttt{\tbs{}fact} for factorial and \texttt{\tbs{}diff} for up-right differential.
     $$
@@ -138,9 +138,9 @@
 
     \subsection{Units}
 
-    The \texttt{siunitx} package provides three commands to typeset numbers and quantities -- \texttt{\tbs{}num}, \texttt{\tbs{}si} and \texttt{\tbs{}SI} -- as well as various units (\emph{cf.} Table \ref{tab:siunitx_units}).
+    The \texttt{siunitx} package provides three commands to typeset numbers and quantities -- \texttt{\tbs{}num}, \texttt{\tbs{}si} and \texttt{\tbs{}SI} -- as well as various units (\cf{} Table \ref{tab:siunitx_units}).
 
-    It is possible to write, both in text or math modes, numbers without units (\emph{e.g.} \num{1}, \num{1.0}, \num{-1}, \num{3.14159}, \num{e100}, $N_A = \num{6.022e23}$), units without quantity (\emph{e.g.} $\si{\joule} = \si{\newton\meter} = \si{\kilogram\meter\squared\per\second\squared}$) and, finally, quantities with their units (\emph{e.g.} \SI{9.81}{\meter\per\second\squared}, $c = \SI{299.6e6}{\meter\per\second}$).
+    It is possible to write, both in text or math modes, numbers without units (\eg{} \num{1}, \num{1.0}, \num{-1}, \num{3.14159}, \num{e100}, $N_A = \num{6.022e23}$), units without quantity (\eg{} $\si{\joule} = \si{\newton\meter} = \si{\kilogram\meter\squared\per\second\squared}$) and, finally, quantities with their units (\eg{} \SI{9.81}{\meter\per\second\squared}, $c = \SI{299.6e6}{\meter\per\second}$).
 
     \subsection{Lists}
 
@@ -157,7 +157,7 @@
         \item for the whole environment with the \texttt{label=newLabel} option.
     \end{itemize}
 
-    In the case of \texttt{enumerate}, \texttt{newLabel} can contain special expressions (\emph{cf.} Table \ref{tab:enumerate_special_expressions}) that will adapt to the item number. For example, \texttt{label=(\tbs{}alph*)} defines the label sequence \enquote{(a), (b), (c), ...}. Still in the case of \texttt{enumerate}, the  \texttt{\tbs{}setcounter} and \texttt{\tbs{}addtocounter} commands allow to modify the current item number.
+    In the case of \texttt{enumerate}, \texttt{newLabel} can contain special expressions (\cf{} Table \ref{tab:enumerate_special_expressions}) that will adapt to the item number. For example, \texttt{label=(\tbs{}alph*)} defines the label sequence \enquote{(a), (b), (c), ...}. Still in the case of \texttt{enumerate}, the  \texttt{\tbs{}setcounter} and \texttt{\tbs{}addtocounter} commands allow to modify the current item number.
 
     One could want to reduce the space between items with the \texttt{noitemsep} option or to delete the left margin with the \texttt{leftmargin=*} option.
 
