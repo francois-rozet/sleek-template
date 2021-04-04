@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2021/01/07 v1.04 Sleek Package]
+\ProvidesPackage{sleek}[2021/04/04 v1.05 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -52,6 +52,8 @@
 \RequirePackage{float}
 \RequirePackage[skip=1em]{caption}
 \RequirePackage{subcaption}
+\RequirePackage[ruled]{algorithm}
+\RequirePackage[noend]{algpseudocode}
 
 % Arrays
 
@@ -100,6 +102,23 @@
     \fancyhead[R]{}
     \newgeometry{margin=2.5cm}
 }
+
+% Algorithms
+
+\makeatletter
+\renewcommand\fs@ruled{% http://ctan.cs.uu.nl/macros/latex/contrib/float/float.pdf
+    \def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@ruled%
+    \def\@fs@pre{\hrule height.08em depth0pt \kern4pt}%
+    \def\@fs@mid{\kern4pt\hrule height.08em depth0pt \kern4pt}%
+    \def\@fs@post{\kern4pt\hrule height.08em depth0pt \relax}%
+    \let\@fs@iftopcapt\iftrue%
+}
+\makeatother
+
+\algrenewcommand{\algorithmiccomment}[1]{\hfill #1}
+\algrenewcommand{\alglinenumber}[1]{\footnotesize{#1}}
+
+\algnewcommand\Break{\textbf{break}}
 
 % Arrays
 
