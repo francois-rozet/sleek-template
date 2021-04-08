@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2021/04/04 v1.05 Sleek Package]
+\ProvidesPackage{sleek}[2021/04/08 v1.06 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -20,7 +20,9 @@
 \RequirePackage{fancyhdr}
 \RequirePackage[bottom]{footmisc}
 
-\edef\restoreparindent{\parindent=\the\parindent\relax}
+\newlength\storedparindent
+\setlength{\storedparindent}{\parindent}
+
 \RequirePackage[parfill]{parskip}
 
 \RequirePackage{enumitem}
@@ -85,7 +87,7 @@
 % Parindent
 
 \DeclareOption{parindent}{
-    \restoreparindent
+    \setlength{\parindent}{\storedparindent}
 }
 
 % Style
@@ -100,7 +102,7 @@
 
 \DeclareOption{noheader}{
     \fancyhead[R]{}
-    \newgeometry{margin=2.5cm}
+    \geometry{margin=2.5cm}
 }
 
 % Algorithms
@@ -182,6 +184,8 @@
 \newcommand{\sbk}[1]{\left[#1\right]} % square brackets [brackets]
 \newcommand{\abs}[1]{\left|#1\right|} % absolute value |x|
 \newcommand{\norm}[1]{\left\|#1\right\|} % norm ||x||
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil} % ceil ⌈x⌉
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor} % floor ⌊x⌋
 
 \newcommand{\fact}[1]{#1!} % factorial x!
 \newcommand{\diff}{\mathrm{d}} % upright 'd' for differential
