@@ -77,7 +77,7 @@
 
     \section{\texttt{sleek}}
 
-    \texttt{sleek} is the main package. It imports the packages (\cf{} Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use.
+    \texttt{sleek} is the main package. It imports the packages (see Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use.
 
     There are three available options to the \texttt{sleek} package :
 
@@ -93,30 +93,29 @@
 
     This template uses \texttt{amsmath} and \texttt{amssymb}, which are the de-facto standard for typesetting mathematics. Additionally, \texttt{esint} provides alternative integral symbols (\cf{} Table 78 in \cite{pakin2020comprehensive}) and \texttt{bm} is used for bold math symbols like vectors (see \eqref{eq:gauss_law}).
 
-    A few custom macros have also been added such as \texttt{\tbs{}rbk}, \texttt{\tbs{}sbk} and \texttt{\tbs{}cbk} for respectively round, square and curly brackets, \texttt{\tbs{}abs} for absolute value, \texttt{\tbs{}norm} for norm, \texttt{\tbs{}fact} for factorial and \texttt{\tbs{}diff} for up-right differential.
-    $$
-        \rbk{\frac{\pi}{2}}, \quad \sbk{\frac{\pi}{2}}, \quad \cbk{\frac{\pi}{2}}, \quad \abs{\frac{\pi}{2}}, \quad \norm{\frac{\pi}{2}}, \quad \fact{n} = \prod_{i = 1}^{n} i, \quad \frac{\diff \bm{x}}{\diff t} = \bm{v}
-    $$
+    A few custom macros have also been added such as \texttt{\tbs{}rbk}, \texttt{\tbs{}sbk} and \texttt{\tbs{}cbk} for respectively round, square and curly brackets or \texttt{\tbs{}abs} for absolute value. Here follows some examples showcasing what is possible with the default packages of \texttt{sleek}.
 
-    Here are some examples showcasing what is possible with the default packages of \texttt{sleek}.
+    \[
+        \rbk{\frac{\pi}{2}}, \quad \sbk{\frac{\pi}{2}}, \quad \cbk{\frac{\pi}{2}}, \quad \abs{\frac{\pi}{2}}, \quad \norm{\frac{\pi}{2}}, \quad \ceil{\frac{\pi}{2}}, \quad \floor{\frac{\pi}{2}}
+    \]
 
     \begin{equation}\label{eq:gauss_law}
-        \oiint_S \bm{E} \cdot \diff \bm{s} = \iiint_V \frac{\rho}{\varepsilon_0} \diff V
+        \oiint_S \bm{E} \cdot \d{\bm{s}} = \iiint_V \frac{\rho}{\varepsilon_0} \d{V}
     \end{equation}
 
     \begin{equation*}
-        e = \sum_{n=0}^\infty \frac{1}{n!}
+        e = \sum_{n=0}^\infty \frac{1}{\fact{n}}
     \end{equation*}
 
     \begin{subequations}
         \begin{align}
-            \frac{\diff x}{\diff t} & = \alpha x - \beta xy \\
-            \frac{\diff y}{\diff t} & = \delta xy - \gamma y
+            \frac{\d{x}}{\d{t}} & = \alpha x - \beta xy \\
+            \frac{\d{y}}{\d{t}} & = \delta xy - \gamma y
         \end{align}
     \end{subequations}
 
     \begin{align*}
-        \ln \abs{x} + C & = \int \frac{1}{x} \,\diff x \\
+        \ln \abs{x} + C & = \int \frac{1}{x} \d{x} \\
         \exp(x) & = \lim_{n \to \infty} \rbk{1 + \frac{x}{n}}^n
     \end{align*}
 
@@ -138,26 +137,26 @@
 
     \subsection{Units}
 
-    The \texttt{siunitx} package provides three commands to typeset numbers and quantities -- \texttt{\tbs{}num}, \texttt{\tbs{}si} and \texttt{\tbs{}SI} -- as well as various units (\cf{} Table \ref{tab:siunitx_units}).
+    The \texttt{siunitx} package provides three commands to typeset numbers and quantities -- \texttt{\tbs{}num}, \texttt{\tbs{}si} and \texttt{\tbs{}SI} -- as well as various units (see Table \ref{tab:siunitx_units}).
 
     It is possible to write, both in text or math modes, numbers without units (\eg{} \num{1}, \num{1.0}, \num{-1}, \num{3.14159}, \num{e100}, $N_A = \num{6.022e23}$), units without quantity (\eg{} $\si{\joule} = \si{\newton\meter} = \si{\kilogram\meter\squared\per\second\squared}$) and, finally, quantities with their units (\eg{} \SI{9.81}{\meter\per\second\squared}, $c = \SI{299.6e6}{\meter\per\second}$).
 
     \subsection{Lists}
 
-    Sleek Template uses \texttt{enumitem} to enhance the listing capabilities of \LaTeX{}. There are three lists environments :
-    \begin{enumerate}
+    Sleek Template uses \texttt{enumitem} to enhance the listing capabilities of \LaTeX{}. There are several lists environments:
+    \begin{itemize}[noitemsep]
         \item \texttt{itemize} for unordered lists;
         \item \texttt{enumerate} for ordered lists;
         \item \texttt{description} for descriptive lists.
-    \end{enumerate}
-
-    In a list, each element is preceded by the command \texttt{\tbs{}item}. It is possible to modify the labels
-    \begin{itemize}
-        \item individually with \texttt{\tbs{}item[newLabel]};
-        \item for the whole environment with the \texttt{label=newLabel} option.
     \end{itemize}
 
-    In the case of \texttt{enumerate}, \texttt{newLabel} can contain special expressions (\cf{} Table \ref{tab:enumerate_special_expressions}) that will adapt to the item number. For example, \texttt{label=(\tbs{}alph*)} defines the label sequence \enquote{(a), (b), (c), ...}. Still in the case of \texttt{enumerate}, the  \texttt{\tbs{}setcounter} and \texttt{\tbs{}addtocounter} commands allow to modify the current item number.
+    In a list, each element is preceded by the command \texttt{\tbs{}item}. It is possible to modify the labels
+    \begin{enumerate*}
+        \item individually with \texttt{\tbs{}item[newLabel]} or
+        \item for the whole environment with the \texttt{label=newLabel} option.
+    \end{enumerate*}
+
+    In the case of \texttt{enumerate}, \texttt{newLabel} can contain special expressions (see Table \ref{tab:enumerate_special_expressions}) that will adapt to the item number. For example, \texttt{label=(\tbs{}alph*)} defines the label sequence \enquote{(a), (b), (c), ...}. Still in the case of \texttt{enumerate}, the  \texttt{\tbs{}setcounter} and \texttt{\tbs{}addtocounter} commands allow to modify the current item number.
 
     One could want to reduce the space between items with the \texttt{noitemsep} option or to delete the left margin with the \texttt{leftmargin=*} option.
 
@@ -228,6 +227,8 @@
         \caption{Example of multi-row cells.}
         \label{tab:multirow_example}
     \end{table}
+
+    The \texttt{booktabs} package also provides tools to build publication-ready tables. The tables in Appendix \ref{chap:Tables} are good examples.
 
     \newpage
 
@@ -354,7 +355,7 @@
 
     \appendix
 
-    \chapter{Tables}
+    \chapter{Tables} \label{chap:Tables}
 
     \begin{table}[h]
         \centering

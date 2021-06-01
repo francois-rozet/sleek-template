@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2021/04/08 v1.06 Sleek Package]
+\ProvidesPackage{sleek}[2021/06/01 v1.07 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -25,7 +25,7 @@
 
 \RequirePackage[parfill]{parskip}
 
-\RequirePackage{enumitem}
+\RequirePackage[inline]{enumitem}
 \RequirePackage{csquotes}
 \RequirePackage[dvipsnames]{xcolor}
 
@@ -121,6 +121,7 @@
 \algrenewcommand{\alglinenumber}[1]{\footnotesize{#1}}
 
 \algnewcommand\Break{\textbf{break}}
+\algnewcommand\Continue{\textbf{continue}}
 
 % Arrays
 
@@ -188,8 +189,11 @@
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor} % floor ⌊x⌋
 
 \newcommand{\fact}[1]{#1!} % factorial x!
-\newcommand{\diff}{\mathrm{d}} % upright 'd' for differential
+
+\renewcommand{\d}[1]{\operatorname{d}\!{#1}} % upright 'd' for differential
+
 \DeclareMathOperator{\tr}{tr} % trace
+\DeclareMathOperator{\diag}{diag} % diagonal
 
 % Figures
 
