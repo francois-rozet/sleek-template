@@ -63,7 +63,7 @@
 
     Sleek Template is a minimal collection of \LaTeX{} packages and settings that ease the writing of beautiful documents. While originally meant for theses, it is perfectly suitable for project reports, articles, syntheses, etc. -- with a few adjustments, like margins.
 
-    It is composed of four separate packages -- \texttt{sleek}, \texttt{sleek-title}, \texttt{sleek-theorems} and \texttt{sleek-listings} -- each of which can be used individually.
+    It is composed of four separate packages which can be used individually: \texttt{sleek}, \texttt{sleek-title}, \texttt{sleek-theorems} and \texttt{sleek-listings}.
 
     \begin{lstlisting}[style=latexFrameTB, caption={Example of Sleek Template packages usage.}, gobble=8]
         \usepackage[english]{babel}
@@ -259,9 +259,7 @@
 
     \section{\texttt{sleek-theorems}}
 
-    \texttt{sleek-theorems} is based on the \texttt{amsthm} and \texttt{thmtools} packages. It provides a handful of theorem-like environments, each of which have different style and purpose.
-
-    The environments are \texttt{theorem}, \texttt{lemma}, \texttt{proposition}, \texttt{proof}, \texttt{definition}, \texttt{hypothesis}, \texttt{method}, \texttt{question}, \texttt{answer}, \texttt{example}, \texttt{remark}, \texttt{note} and \texttt{tip}.
+    \texttt{sleek-theorems} is based on the \texttt{amsthm} and \texttt{thmtools} packages. It provides a handful of theorem-like environments, each of which have different style and purpose: \texttt{theorem}, \texttt{lemma}, \texttt{proposition}, \texttt{proof}, \texttt{definition}, \texttt{hypothesis}, \texttt{method}, \texttt{question}, \texttt{answer}, \texttt{example}, \texttt{remark}, \texttt{note} and \texttt{tip}.
 
     \begin{note}
         The option \texttt{french} translates the name of each provided environment. It is also possible, and easy, to add your own language as an option in the source code.
@@ -309,11 +307,9 @@
 
     The \texttt{sleek-listings} package is a small collection of styles for the environments of the \texttt{listings} package, which is useful to showcase nicely samples of code.
 
-    Currently, the basic styles \texttt{default} and \texttt{monokai} are implemented. The former is a neutral style (no line numbering, no frame, only good old black code) while the latter is an all-framed style reproducing the iconic \href{https://monokai.nl/}{Monokai} color-map.
+    The package provides a very neutral (no line numbering, no frame, only good old black code) style called \texttt{default}. In addition, the language styles \texttt{c}, \texttt{cpp}, \texttt{matlab}, \texttt{python} and \texttt{java} are implemented, with basic color-maps.
 
-    In addition, the language styles \texttt{c}, \texttt{cpp}, \texttt{matlab}, \texttt{python} and \texttt{java} are implemented, with basic color-maps.
-
-    Finally, some commands to build upon existing styles are provided :
+    Finally, some commands to build upon existing styles are provided:
 
     \begin{itemize}
         \item \texttt{\tbs{}NumberStyle\{stylename\}} creates a style \texttt{stylenameNumber} with line numbering;

@@ -1,10 +1,10 @@
-\ProvidesPackage{sleek-listings}[2020/10/28 v1.0 Sleek Listings]
+\ProvidesPackage{sleek-listings}[2021/06/02 v1.01 Sleek Listings]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage{inconsolata}
+\RequirePackage[scaled=0.95]{inconsolata}
 \RequirePackage{listings}
 \RequirePackage{xcolor}
 
@@ -99,8 +99,8 @@
     aboveskip=\baselineskip,
     belowskip=\smallskipamount,
     %%%%%
-    basicstyle=\footnotesize\ttfamily,
-    numberstyle=\footnotesize\ttfamily,
+    basicstyle=\ttfamily,
+    numberstyle=\ttfamily,
     showstringspaces=false
 }
 
@@ -109,34 +109,6 @@
 \NumberStyle{default}
 \FrameNumberStyle{default}
 \FrameTBNumberStyle{default}
-
-\lstdefinestyle{monokai}{
-    style=Framedefault,
-    %%%%%
-    backgroundcolor=\color[HTML]{272822},
-    framerule=0em,
-    %%%%%
-    basicstyle=\footnotesize\ttfamily\color[HTML]{F8F8F2},
-    numberstyle=\footnotesize\ttfamily\color[HTML]{272822},
-    commentstyle=\color[HTML]{75715E},
-    keywordstyle=[1]{\color[HTML]{F92672}},
-    keywordstyle=[2]{\color[HTML]{A6E22E}},
-    keywordstyle=[3]{\color[HTML]{AE81FF}},
-    stringstyle=\color[HTML]{E6DB74},
-    %%%%%
-    % otherkeywords={!,.,+,-,*,/,=,<,>,^,|,\&,OR,AND}
-}
-
-\lstdefinestyle{monokaiNumber}{
-    style=monokai,
-    %%%%%
-    xleftmargin=2.75em,
-    framexleftmargin=2.75em,
-    %%%%%
-    numbers=left,
-    numberstyle=\footnotesize\ttfamily\color[HTML]{f8f8f2},
-    numbersep=1em
-}
 
 \lstdefinestyle{c}{
     language=C,
@@ -166,8 +138,8 @@
     language=matlab,
     style=default,
     %%%%%
-    basicstyle=\footnotesize\fontfamily{pcr}\selectfont,
-    numberstyle=\footnotesize\fontfamily{pcr}\selectfont,
+    basicstyle=\fontfamily{pcr}\selectfont,
+    numberstyle=\fontfamily{pcr}\selectfont,
     commentstyle=\ForestGreen,
     keywordstyle=\TrueBlue,
     stringstyle=\VeronicaPurple,
