@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2021/06/02 v1.08 Sleek Package]
+\ProvidesPackage{sleek}[2021/06/03 v1.09 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -80,6 +80,16 @@
 \DeclareFieldFormat*{title}{\enquote{#1}}
 \DeclareFieldFormat*{citetitle}{\enquote{#1}}
 
+\DefineBibliographyStrings{english}{
+    backrefpage = {page},
+    backrefpages = {pages}
+}
+
+\DefineBibliographyStrings{french}{
+    backrefpage = {page},
+    backrefpages = {pages}
+}
+
 %%%%%%%%%%%%
 % Settings %
 %%%%%%%%%%%%
@@ -126,18 +136,6 @@
 % Arrays
 
 \renewcommand{\arraystretch}{1.1}
-
-% Bibliography
-
-\DefineBibliographyStrings{english}{
-    backrefpage = {page},
-    backrefpages = {pages}
-}
-
-\DefineBibliographyStrings{french}{
-    backrefpage = {page},
-    backrefpages = {pages}
-}
 
 % Languages
 
