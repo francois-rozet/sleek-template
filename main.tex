@@ -192,7 +192,7 @@
 
     Thanks to the \texttt{graphicx} package, it is possible to include external graphic documents (images, plots, etc.) in your document with the \texttt{\tbs{}includegraphics} command. Most image type format (\texttt{jpg}, \texttt{png}, \texttt{bmp}, etc.) are supported by this command. However, it should be noted that it is highly preferable to use vectorial types, such as \texttt{pdf} or \texttt{eps}.
 
-    \begin{figure}[H]
+    \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\textwidth]{resources/pdf/logo.pdf}
         \noskipcaption{Random University logo.}
@@ -203,7 +203,7 @@
 
     The packages \texttt{multicol} and \texttt{multirow} comes handy for complex table formatting such as multi-column or multi-row cells.
 
-    \begin{table}[H]
+    \begin{table}[h]
         \centering
         \begin{tabular}{|r|r|c|l|}
             \hline
@@ -211,11 +211,11 @@
              b &  ef &     jkl      & tuvx \\ \hline
             cd & ghi &     mnop     & wyz  \\ \hline
         \end{tabular}
-        \caption{Example of multi-column cells.}
+        \noskipcaption{Example of multi-column cells.}
         \label{tab:multicol_example}
     \end{table}
 
-    \begin{table}[H]
+    \begin{table}[h]
         \centering
         \begin{tabular}{|l|c|r|}
             \hline
@@ -224,7 +224,7 @@
                                  &  hij  &  klm \\ \hline
             nopq                 & rstuv & wxyz \\ \hline
         \end{tabular}
-        \caption{Example of multi-row cells.}
+        \noskipcaption{Example of multi-row cells.}
         \label{tab:multirow_example}
     \end{table}
 

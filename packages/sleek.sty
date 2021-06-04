@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2021/06/03 v1.09 Sleek Package]
+\ProvidesPackage{sleek}[2021/06/04 v1.1.0 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -52,7 +52,7 @@
 % Figures
 
 \RequirePackage{float}
-\RequirePackage[skip=1em]{caption}
+\RequirePackage[skip=1.5ex]{caption}
 \RequirePackage{subcaption}
 \RequirePackage[ruled]{algorithm}
 \RequirePackage[noend]{algpseudocode}
@@ -75,7 +75,7 @@
     backref=true
 ]{biblatex}
 
-\setlength\bibitemsep{0.25em}
+\setlength\bibitemsep{1ex}
 
 \DeclareFieldFormat*{title}{\enquote{#1}}
 \DeclareFieldFormat*{citetitle}{\enquote{#1}}
@@ -118,11 +118,11 @@
 % Algorithms
 
 \makeatletter
-\renewcommand\fs@ruled{% http://ctan.cs.uu.nl/macros/latex/contrib/float/float.pdf
+\renewcommand\fs@ruled{% https://ctan.org/pkg/float
     \def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@ruled%
-    \def\@fs@pre{\hrule height.08em depth0pt \kern4pt}%
-    \def\@fs@mid{\kern4pt\hrule height.08em depth0pt \kern4pt}%
-    \def\@fs@post{\kern4pt\hrule height.08em depth0pt \relax}%
+    \def\@fs@pre{\hrule height \heavyrulewidth depth 0pt \kern 4pt}%
+    \def\@fs@mid{\kern 4pt \hrule height \heavyrulewidth depth 0pt \kern 4pt}%
+    \def\@fs@post{\kern 4pt \hrule height \heavyrulewidth depth 0pt \relax}%
     \let\@fs@iftopcapt\iftrue%
 }
 \makeatother
@@ -195,7 +195,7 @@
 
 % Figures
 
-\newcommand{\noskipcaption}[1]{\caption{#1}\vspace{-1em}} % caption without additional vertical space
+\newcommand{\noskipcaption}[1]{\caption{#1}\vspace{-\intextsep}} % caption without additional vertical space
 
 % Footnotes
 

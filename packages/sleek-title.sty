@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek-title}[2021/04/08 v1.0 Sleek Title]
+\ProvidesPackage{sleek-title}[2021/06/04 v1.1.0 Sleek Title]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -34,7 +34,7 @@
 
 \newcommand*{\adjustheight}{ % saves the height of the top and bottom mini-pages in \miniheight
     \countlines{\bfseries\huge\@title}
-    \FPeval{\miniheight}{0.435 - 0.02 * (\numlines - 1)}
+    \FPeval{\miniheight}{0.44 - 0.02 * (\numlines - 1)}
 }
 
 % Custom fields
@@ -61,7 +61,7 @@
 
 \renewcommand*{\maketitle}{%
     \adjustheight
-    \newgeometry{margin = 2.5cm}
+    \newgeometry{margin=2.5cm}
     \begin{titlepage}
         \setlength{\parindent}{0pt}
         \begin{minipage}[t][\miniheight\textheight]{\textwidth}
@@ -70,13 +70,13 @@
                     \includegraphics[height=0.15\textheight]{\@logo}
                 \fi
                 \vfill
-                {\scshape\ifInstitute\LARGE\@institute\fi\ifFaculty\ifInstitute\\[0.125em]\fi\Large\@faculty\fi\ifDepartment\\[0.25em]\large\@department\fi\clearpar}
+                {\scshape\ifInstitute\LARGE\@institute\fi\ifFaculty\ifInstitute\\[0.25ex]\fi\Large\@faculty\fi\ifDepartment\\[0.5ex]\large\@department\fi\clearpar}
                 \vfill
             \end{center}
         \end{minipage}
         \vfill
         \begin{minipage}{\textwidth}
-            \begin{mdframed}[linewidth=2pt, innertopmargin=1.5em, innerbottommargin=1.5em, leftline=false, rightline=false]
+            \begin{mdframed}[linewidth=2pt, innertopmargin=3ex, innerbottommargin=3ex, leftline=false, rightline=false]
                 \begin{center}
                     {\bfseries\huge\@title\clearpar}
                 \end{center}
