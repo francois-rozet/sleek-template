@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2021/06/04 v1.1.0 Sleek Package]
+\ProvidesPackage{sleek}[2021/08/06 v1.1.1 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -44,6 +44,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{bm}
 \RequirePackage{esint}
+\RequirePackage{mathtools}
 
 % Units
 
@@ -90,6 +91,10 @@
     backrefpages = {pages}
 }
 
+% Others
+
+\RequirePackage{comment}
+
 %%%%%%%%%%%%
 % Settings %
 %%%%%%%%%%%%
@@ -102,17 +107,17 @@
 
 % Style
 
-\geometry{top=3.5cm,bottom=2.5cm,right=2.5cm,left=2.5cm}
+\geometry{margin=2.5cm}
 
 \pagestyle{fancy}
 \fancyhead[L]{}
-\fancyhead[R]{\leftmark}
+\fancyhead[R]{}
 \fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0pt}
+\renewcommand*{\headrulewidth}{0pt}
 
-\DeclareOption{noheader}{
-    \fancyhead[R]{}
-    \geometry{margin=2.5cm}
+\DeclareOption{header}{
+    \geometry{top=3.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm}
+    \fancyhead[R]{\leftmark}
 }
 
 % Algorithms
@@ -129,6 +134,9 @@
 
 \algrenewcommand{\algorithmiccomment}[1]{\hfill #1}
 \algrenewcommand{\alglinenumber}[1]{\footnotesize{#1}}
+
+\algnewcommand\Input{\item[\textbf{Input:}]}
+\algnewcommand\Output{\item[\textbf{Output:}]}
 
 \algnewcommand\Break{\textbf{break}}
 \algnewcommand\Continue{\textbf{continue}}
@@ -168,7 +176,7 @@
 
 % Table of contents
 
-\newcommand{\romantableofcontents}{ % creates a table of contents with roman (i, ii, iii, ...) numbering of the pages
+\newcommand*{\romantableofcontents}{ % table of contents with roman (i, ii, ...) numbering of the pages
     \newpage
     \pagenumbering{roman}
     \tableofcontents
@@ -178,24 +186,26 @@
 
 % Mathematics
 
-\newcommand{\rbk}[1]{\left(#1\right)} % round brackets (parentheses)
-\newcommand{\cbk}[1]{\left\{#1\right\}} % curly brackets {braces}
-\newcommand{\sbk}[1]{\left[#1\right]} % square brackets [brackets]
-\newcommand{\abs}[1]{\left|#1\right|} % absolute value |x|
-\newcommand{\norm}[1]{\left\|#1\right\|} % norm ||x||
-\newcommand{\ceil}[1]{\left\lceil#1\right\rceil} % ceil ⌈x⌉
-\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor} % floor ⌊x⌋
+\DeclarePairedDelimiter\rbk{(}{)} % round brackets (parentheses)
+\DeclarePairedDelimiter\cbk{\{}{\}} % curly brackets {braces}
+\DeclarePairedDelimiter\sbk{[}{]} % square brackets [brackets]
 
-\newcommand{\fact}[1]{#1!} % factorial x!
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value |x|
+\DeclarePairedDelimiter\norm{\lVert}{\rVert} % norm ||x||
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil ⌈x⌉
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor ⌊x⌋
 
-\renewcommand{\d}[1]{\operatorname{d}\!{#1}} % upright 'd' for differential
+\newcommand*{\fact}[1]{#1!} % factorial x!
+
+\renewcommand*{\d}[1]{\operatorname{d}\!{#1}} % upright 'd' for differential
 
 \DeclareMathOperator{\tr}{tr} % trace
 \DeclareMathOperator{\diag}{diag} % diagonal
 
 % Figures
 
-\newcommand{\noskipcaption}[1]{\caption{#1}\vspace{-\intextsep}} % caption without additional vertical space
+\captionsetup{labelsep=period} % 'Figure 1.2.' instead of 'Figure 1.2:'
+\newcommand*{\noskipcaption}[1]{\caption{#1}\vspace{-\intextsep}} % caption without additional vertical space
 
 % Footnotes
 

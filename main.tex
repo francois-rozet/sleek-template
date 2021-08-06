@@ -5,7 +5,7 @@
 %%%%%%%%%%%%
 
 \usepackage[english]{babel}
-\usepackage[noheader]{packages/sleek}
+\usepackage{packages/sleek}
 \usepackage{packages/sleek-title}
 \usepackage{packages/sleek-theorems}
 \usepackage{packages/sleek-listings}
@@ -82,8 +82,8 @@
     There are three available options to the \texttt{sleek} package :
 
     \begin{enumerate}[noitemsep]
-        \item \texttt{parindent} add indentation to the first line of paragraphs;
-        \item \texttt{noheader} removes the document header;
+        \item \texttt{parindent} adds indentation to the first line of paragraphs;
+        \item \texttt{header} adds a header with the current chapter to pages;
         \item \texttt{french} changes the decimal sign to a comma and translates some captions.
     \end{enumerate}
 
@@ -96,7 +96,7 @@
     A few custom macros have also been added such as \texttt{\tbs{}rbk}, \texttt{\tbs{}sbk} and \texttt{\tbs{}cbk} for respectively round, square and curly brackets or \texttt{\tbs{}abs} for absolute value. Here follows some examples showcasing what is possible with the default packages of \texttt{sleek}.
 
     \[
-        \rbk{\frac{\pi}{2}}, \quad \sbk{\frac{\pi}{2}}, \quad \cbk{\frac{\pi}{2}}, \quad \abs{\frac{\pi}{2}}, \quad \norm{\frac{\pi}{2}}, \quad \ceil{\frac{\pi}{2}}, \quad \floor{\frac{\pi}{2}}
+        \rbk*{\pi}, \quad \sbk*{\frac{\pi}{2}}, \quad \cbk*{\pi=3 + \frac{1}{7 + \frac{1}{15 + \frac{1}{1 + \dots}}}}, \quad \abs{2 \pi}, \quad \norm{\frac{\pi}{4}}, \quad \ceil[\big]{\frac{22}{7}}, \quad \floor[\Big]{\frac{\pi^2}{6}}
     \]
 
     \begin{equation}\label{eq:gauss_law}
@@ -116,7 +116,7 @@
 
     \begin{align*}
         \ln \abs{x} + C & = \int \frac{1}{x} \d{x} \\
-        \exp(x) & = \lim_{n \to \infty} \rbk{1 + \frac{x}{n}}^n
+        \exp(x) & = \lim_{n \to \infty} \rbk*{1 + \frac{x}{n}}^n
     \end{align*}
 
     \begin{equation}
@@ -195,7 +195,7 @@
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\textwidth]{resources/pdf/logo.pdf}
-        \noskipcaption{Random University logo.}
+        \caption{Random University logo.}
         \label{fig:random_university_logo}
     \end{figure}
 
@@ -224,7 +224,7 @@
                                  &  hij  &  klm \\ \hline
             nopq                 & rstuv & wxyz \\ \hline
         \end{tabular}
-        \noskipcaption{Example of multi-row cells.}
+        \caption{Example of multi-row cells.}
         \label{tab:multirow_example}
     \end{table}
 

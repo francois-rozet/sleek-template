@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek-title}[2021/06/04 v1.1.0 Sleek Title]
+\ProvidesPackage{sleek-title}[2021/08/06 v1.1.1 Sleek Title]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -15,7 +15,7 @@
 
 % Auxiliary commands
 
-\newcommand*{\clearpar}{\unskip\par} % or \unskip\strut\par
+\newcommand*{\clearpar}{\unskip\par}
 
 \newcommand*{\countlines}[1]{ % saves the number of lines of #1 in \numlines
     \setbox0\vbox{
@@ -30,11 +30,6 @@
            \advance\count@\@ne
         \repeat
     }
-}
-
-\newcommand*{\adjustheight}{ % saves the height of the top and bottom mini-pages in \miniheight
-    \countlines{\bfseries\huge\@title}
-    \FPeval{\miniheight}{0.44 - 0.02 * (\numlines - 1)}
 }
 
 % Custom fields
@@ -56,62 +51,113 @@
 \newcommand*{\context}[1]{\gdef\@context{#1}\Contexttrue}
 
 %%%%%%%%%%%%%%
-% Title-page %
+% Title page %
 %%%%%%%%%%%%%%
 
-\renewcommand*{\maketitle}{%
-    \adjustheight
+\newlength\topheight
+\newlength\logoheight
+\newlength\titleskipabove
+\newlength\titleskipbelow
+
+\renewcommand*{\maketitle}{
+    \calculateheights
     \newgeometry{margin=2.5cm}
     \begin{titlepage}
         \setlength{\parindent}{0pt}
-        \begin{minipage}[t][\miniheight\textheight]{\textwidth}
+        \begin{minipage}[t][\topheight]{\textwidth}
             \begin{center}
                 \ifLogo
-                    \includegraphics[height=0.15\textheight]{\@logo}
+                    \includegraphics[height=\logoheight]{\@logo}
                 \fi
                 \vfill
-                {\scshape\ifInstitute\LARGE\@institute\fi\ifFaculty\ifInstitute\\[0.25ex]\fi\Large\@faculty\fi\ifDepartment\\[0.5ex]\large\@department\fi\clearpar}
-                \vfill
+                {
+                    \scshape
+                    \ifInstitute
+                        {\LARGE\@institute\unskip\\}
+                    \fi
+                    \ifFaculty
+                        {\Large\@faculty\unskip\\[1ex]}
+                    \fi
+                    \ifDepartment
+                        {\large\@department}
+                    \fi
+                    \clearpar
+                }
             \end{center}
         \end{minipage}
-        \vfill
         \begin{minipage}{\textwidth}
-            \begin{mdframed}[linewidth=2pt, innertopmargin=3ex, innerbottommargin=3ex, leftline=false, rightline=false]
+            \vspace{\titleskipabove}
+            \begin{mdframed}[
+                linewidth=2pt,
+                innertopmargin=3ex,
+                innerbottommargin=3ex,
+                leftline=false,
+                rightline=false
+            ]
                 \begin{center}
                     {\bfseries\huge\@title\clearpar}
                 \end{center}
             \end{mdframed}
+            \vspace{-0.25cm}
+            \vspace{\titleskipbelow}
         \end{minipage}
-        \vfill
-        \begin{minipage}[b][\miniheight\textheight][t]{\textwidth}
-            \begin{center}
-                \ifSubtitle
-                    \begin{center}
-                        {\Large\@subtitle\clearpar}
-                    \end{center}
-                \fi
-                \vfill
-                \ifSupervisor
-                    \begin{minipage}[t]{0.49\textwidth}
-                        {\large\@author\clearpar}
-                    \end{minipage}
-                    \begin{minipage}[t]{0.49\textwidth}
-                        \begin{flushright}
-                            {\large\@supervisor\clearpar}
-                        \end{flushright}
-                    \end{minipage}
-                \else
+        \begin{center}
+            \ifSubtitle
+                {\Large\@subtitle\clearpar}
+            \fi
+            \vfill
+            \ifSupervisor
+                \begin{minipage}[t]{0.49\textwidth}
                     {\large\@author\clearpar}
-                \fi
-                \vfill
-                \ifContext
-                    {\large\@context\par}
-                \fi
-                {\large\@date\par}
-            \end{center}
-        \end{minipage}
+                \end{minipage}
+                \begin{minipage}[t]{0.49\textwidth}
+                    \begin{flushright}
+                        {\large\@supervisor\clearpar}
+                    \end{flushright}
+                \end{minipage}
+            \else
+                {\large\@author}
+            \fi
+            \vfill
+            \ifContext
+                {\large\@context\clearpar}
+            \fi
+            {\large\@date\clearpar}
+        \end{center}
     \end{titlepage}
     \restoregeometry
 }
+
+%%%%%%%%%%%
+% Options %
+%%%%%%%%%%%
+
+\newcommand*{\calculateheights}{}
+
+\DeclareOption{center}{
+    \renewcommand*{\calculateheights}{
+        \countlines{\bfseries\huge\@title}
+        \FPeval{\topratio}{0.3 - 0.01 * (\numlines - 1)}
+        \FPeval{\skipratio}{\topratio - 0.15}
+        \setlength{\logoheight}{0.15\textheight}
+        \setlength{\topheight}{\topratio\textheight}
+        \setlength{\titleskipabove}{\skipratio\textheight}
+        \setlength{\titleskipbelow}{3ex}
+    }
+}
+
+\DeclareOption{custom}{
+    \renewcommand*{\calculateheights}{
+        \countlines{\bfseries\huge\@title}
+        \setlength{\logoheight}{0.125\textheight}
+        \setlength{\topheight}{0.2\textheight}
+        \setlength{\titleskipabove}{1.5cm}
+        \setlength{\titleskipbelow}{1.5cm}
+    }
+}
+
+\ExecuteOptions{center}
+
+\ProcessOptions\relax
 
 \endinput
