@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2021/08/06 v1.1.1 Sleek Package]
+\ProvidesPackage{sleek}[2021/09/07 v1.1.2 Sleek Package]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -72,7 +72,7 @@
     style=numeric-comp,
     sorting=none,
     maxcitenames=1,
-    maxbibnames=99,
+    maxbibnames=3,
     backref=true
 ]{biblatex}
 
@@ -160,8 +160,8 @@
     \addto\captionsfrench{\def\proofname{Preuve}}
 
     %% Macros
-    \def\cad{c.-à-d.}
-    \def\Cad{C.-à-d.}
+    \def\cad{c.-à-d.\@}
+    \def\Cad{C.-à-d.\@}
 }
 
 %%%%%%%%%%%%
@@ -170,9 +170,9 @@
 
 % Abbreviations
 
-\def\cf{\emph{cf.}} % confer
-\def\eg{\emph{e.g.}} % exempli gratia
-\def\ie{\emph{i.e.}} % id est
+\def\cf{\emph{cf.}\@} % confer
+\def\eg{\emph{e.g.}\@} % exempli gratia
+\def\ie{\emph{i.e.}\@} % id est
 
 % Table of contents
 
