@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek-listings}[2021/06/04 v1.1.0 Sleek Listings]
+\ProvidesPackage{sleek-listings}[2021/10/23 v1.1.1 Sleek Listings]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -7,80 +7,6 @@
 \RequirePackage[scaled=0.95]{inconsolata}
 \RequirePackage{listings}
 \RequirePackage{xcolor}
-
-%%%%%%%%%%%%
-% Settings %
-%%%%%%%%%%%%
-
-% Colors
-
-\def\ForestGreen{\color[HTML]{228B22}}
-\def\TrueBlue{\color[HTML]{0000FF}}
-\def\VeronicaPurple{\color[HTML]{A020F0}}
-
-\def\FreeSpeechRed{\color[HTML]{DD0000}}
-\def\SafetyOrange{\color[HTML]{FF7700}}
-\def\DarkMagenta{\color[HTML]{900090}}
-\def\IslamicGreen{\color[HTML]{00AA00}}
-
-%%%%%%%%%%%%
-% Commands %
-%%%%%%%%%%%%
-
-\newcommand{\NumberStyle}[1]{
-    \lstdefinestyle{#1Number}{
-        style=#1,
-        %%%%%
-        numbers=left
-    }
-}
-
-\newcommand{\FrameStyle}[1]{
-    \lstdefinestyle{#1Frame}{
-        style=#1,
-        %%%%%
-        frame=single,
-        framesep=0em,
-        rulesep=0em,
-        xleftmargin=0.75em,
-        xrightmargin=0.75em,
-        framexleftmargin=0.75em,
-        framexrightmargin=0.75em,
-        framextopmargin=1ex,
-        framexbottommargin=1ex
-    }
-}
-
-\newcommand{\FrameTBStyle}[1]{
-    \FrameStyle{#1}
-    \lstdefinestyle{#1FrameTB}{
-        style=#1Frame,
-        %%%%%
-        frame=tb,
-        xleftmargin=0em,
-        xrightmargin=0em,
-        framexleftmargin=0em,
-        framexrightmargin=0em
-    }
-}
-
-\newcommand{\FrameTBNumberStyle}[1]{
-    \FrameTBStyle{#1}
-    \NumberStyle{#1FrameTB}
-}
-
-\newcommand{\FrameNumberStyle}[1]{
-    \FrameStyle{#1}
-    \lstdefinestyle{#1FrameNumber}{
-        style=#1Frame,
-        %%%%%
-        xleftmargin=2.75em,
-        framexleftmargin=2.75em,
-        %%%%%
-        numbers=left,
-        numbersep=1em
-    }
-}
 
 %%%%%%%%%%
 % Styles %
@@ -91,86 +17,149 @@
     breakatwhitespace=true,
     columns=fixed,
     extendedchars=true,
-    upquote=true,
+    inputencoding=utf8,
+    keepspaces,
+    showstringspaces=false,
     tabsize=4,
+    upquote=true,
     %%%%%
-    framerule=0.1em,
-    captionpos=b,
     aboveskip=\baselineskip,
     belowskip=\smallskipamount,
+    captionpos=b,
+    framerule=0.1em,
     %%%%%
     basicstyle=\small\ttfamily,
-    numberstyle=\small\ttfamily,
-    showstringspaces=false
+    numberstyle=\small\ttfamily
 }
 
 \lstset{style=default}
 
-\NumberStyle{default}
-\FrameNumberStyle{default}
-\FrameTBNumberStyle{default}
+\lstdefinestyle{numbered}{
+    style=default,
+    numbers=left
+}
 
-\lstdefinestyle{c}{
+\lstdefinestyle{framed}{
+    style=default,
+    frame=single,
+    framesep=0em,
+    rulesep=0em,
+    xleftmargin=0.75em,
+    xrightmargin=0.75em,
+    framexleftmargin=0.75em,
+    framexrightmargin=0.75em,
+    framextopmargin=1ex,
+    framexbottommargin=1ex
+}
+
+\lstdefinestyle{framednumbered}{
+    style=framed,
+    xleftmargin=2.75em,
+    framexleftmargin=2.75em,
+    numbers=left,
+    numbersep=1em
+}
+
+\lstdefinestyle{ruled}{
+    style=framed,
+    frame=tb,
+    xleftmargin=0em,
+    xrightmargin=0em,
+    framexleftmargin=0em,
+    framexrightmargin=0em
+}
+
+\lstdefinestyle{rulednumbered}{
+    style=ruled,
+    numbers=left
+}
+
+%%%%%%%%%%
+% Colors %
+%%%%%%%%%%
+
+\def\ForestGreen{\color[HTML]{228B22}}
+\def\TrueBlue{\color[HTML]{0000FF}}
+\def\VeronicaPurple{\color[HTML]{A020F0}}
+\def\JustGray{\color[HTML]{7F7F7F}}
+
+\def\FreeSpeechRed{\color[HTML]{DD0000}}
+\def\SafetyOrange{\color[HTML]{FF7700}}
+\def\DarkMagenta{\color[HTML]{900090}}
+\def\IslamicGreen{\color[HTML]{00AA00}}
+
+\lstdefinestyle{colorful}{
+    commentstyle=\ForestGreen,
+    keywordstyle=[1]{\TrueBlue},
+    keywordstyle=[2]{\VeronicaPurple},
+    stringstyle=\JustGray,
+    emphstyle=\textbf
+}
+
+%%%%%%%%%%%%%
+% Languages %
+%%%%%%%%%%%%%
+
+\lstdefinelanguage{latex}{
+    language=[LaTeX]TeX,
+    morekeywords={},
+    style=colorful
+}
+
+\lstdefinelanguage{c*}{
     language=C,
-    style=default,
-    %%%%%
-    commentstyle=\ForestGreen,
-    keywordstyle=\TrueBlue,
-    stringstyle=\VeronicaPurple,
-    emphstyle=\TrueBlue,
-    %%%%%
-    emph={}
+    morekeywords={},
+    style=colorful
 }
 
-\lstdefinestyle{cpp}{
+\lstdefinelanguage{cpp*}{
     language=C++,
-    style=default,
-    %%%%%
-    commentstyle=\ForestGreen,
-    keywordstyle=\TrueBlue,
-    stringstyle=\VeronicaPurple,
-    emphstyle=\TrueBlue,
-    %%%%%
-    emph={std}
+    morekeywords={std},
+    style=colorful
 }
 
-\lstdefinestyle{matlab}{
+\lstdefinelanguage{matlab*}{
     language=matlab,
-    style=default,
-    %%%%%
-    basicstyle=\small\fontfamily{pcr}\selectfont,
-    numberstyle=\small\fontfamily{pcr}\selectfont,
-    commentstyle=\ForestGreen,
-    keywordstyle=\TrueBlue,
-    stringstyle=\VeronicaPurple,
-    emphstyle=\TrueBlue,
-    %%%%%
-    emph={clearvars}
+    morekeywords={clearvars, numel},
+    style=colorful
 }
 
-\lstdefinestyle{python}{
+\lstdefinelanguage{python*}{
     language=python,
-    style=default,
-    %%%%%
-    commentstyle=\FreeSpeechRed,
-    keywordstyle=[1]{\SafetyOrange},
-    keywordstyle=[2]{\DarkMagenta},
-    stringstyle=\IslamicGreen,
-    emphstyle=\SafetyOrange,
-    %%%%%
-    emph={as}
+    morekeywords=[1]{with, as},
+    style=colorful
 }
 
-\lstdefinestyle{java}{
+\lstdefinelanguage{java*}{
     language=java,
-    style=default,
-    %%%%%
-    commentstyle=\ForestGreen,
-    keywordstyle=\TrueBlue,
-    stringstyle=\VeronicaPurple,
-    emphstyle=\TrueBlue,
-    %%%%%
-    emph={}
+    morekeywords={},
+    style=colorful
+}
+
+\lstdefinelanguage{scheme}{
+    alsoletter={!,?,+,-,*,/,<,=,>,\#},
+    literate=*{`}{{`}}{1},
+    morecomment=[l]{;},
+    morecomment=[s]{\#|}{|\#},
+    morestring=[b]",
+    morekeywords=[1]{
+        define, lambda, let, let*, letrec,
+        eval, read, print, quote, unquote,
+        list, list*, cons, append, car, cdr, caar, cadr, cdar, cddr, cadar, caddr,
+        length, reverse, range, member, flatten, filter, count,
+        if, cond, else,
+        map, apply,
+        import, export, require,
+        eq?, eqv?, equal?, number?, boolean?, zero?, even?, odd?, pair?, list?, null?, symbol?, procedure?, string?,
+        exit
+    },
+    morekeywords=[2]{
+        +, -, *, /, <, =, >, <=, >=,
+        and, or, not,
+        quotient, modulo, expt, sqrt
+    },
+    sensitive,
+    style=colorful
 }
 
 \endinput

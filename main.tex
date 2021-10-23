@@ -32,22 +32,8 @@
 \addbibresource{./resources/bib/references.bib}
 
 %%%%%%%%%%
-% Others %
+% Macros %
 %%%%%%%%%%
-
-\lstdefinestyle{latex}{
-    language=TeX,
-    style=default,
-    %%%%%
-    commentstyle=\ForestGreen,
-    keywordstyle=\TrueBlue,
-    stringstyle=\VeronicaPurple,
-    emphstyle=\TrueBlue,
-    %%%%%
-    emph={LaTeX, usepackage, textit, textbf, textsc}
-}
-
-\FrameTBStyle{latex}
 
 \def\tbs{\textbackslash}
 
@@ -65,10 +51,10 @@
 
     It is composed of four separate packages which can be used individually: \texttt{sleek}, \texttt{sleek-title}, \texttt{sleek-theorems} and \texttt{sleek-listings}.
 
-    \begin{lstlisting}[style=latexFrameTB, caption={Example of Sleek Template packages usage.}, gobble=8]
-        \usepackage[english]{babel}
-        \usepackage[noheader]{packages/sleek}
-        \usepackage{packages/sleek-title}
+    \begin{lstlisting}[style=ruled, language=latex, caption={Example of Sleek Template packages usage.}, gobble=4]
+    \usepackage[english]{babel}
+    \usepackage[noheader]{packages/sleek}
+    \usepackage{packages/sleek-title}
     \end{lstlisting}
 
     \blindfootnote{If you are a \LaTeX{} beginner consider the excellent tutorial \citetitle{overleaf}, \textcite{overleaf}. Also, there are a lot of symbols available in \LaTeX{} and, therefore, in this template. I recommend the use of \citetitle{pakin2020comprehensive}, \textcite{pakin2020comprehensive} for searching symbols.}
@@ -240,17 +226,17 @@
 
     Among these, only \texttt{\tbs{}title}, \texttt{\tbs{}author} and \texttt{\tbs{}date} have to be provided. However, none of the fields should stay empty. Prefer deleting or commenting the line if so.
 
-    \begin{lstlisting}[style=latexFrameTB, caption={Example of \texttt{sleek-title} title-page definition.}, gobble=8]
-        \logo{./resources/pdf/logo.pdf}
-        \institute{Random University}
-        \faculty{Faculty of Whatever Sciences}
-        %\department{Department of Anything but Psychology}
-        \title{A sleek \LaTeX{} template}
-        \subtitle{With a sleeker title-page}
-        \author{\textit{Author}\\Francois \textsc{Rozet}}
-        %\supervisor{Linus \textsc{Torvalds}}
-        %\context{Well, I was bored...}
-        \date{\today}
+    \begin{lstlisting}[style=ruled, language=latex, caption={Example of \texttt{sleek-title} title-page definition.}, gobble=4]
+    \logo{./resources/pdf/logo.pdf}
+    \institute{Random University}
+    \faculty{Faculty of Whatever Sciences}
+    %\department{Department of Anything but Psychology}
+    \title{A sleek \LaTeX{} template}
+    \subtitle{With a sleeker title-page}
+    \author{\textit{Author}\\Francois \textsc{Rozet}}
+    %\supervisor{Linus \textsc{Torvalds}}
+    %\context{Well, I was bored...}
+    \date{\today}
     \end{lstlisting}
 
     It is also possible to use Sleek Template without \texttt{sleek-title}, in which case the default \LaTeX{} title-page will be used.
@@ -305,30 +291,23 @@
 
     \section{\texttt{sleek-listings}}
 
-    The \texttt{sleek-listings} package is a small collection of styles for the environments of the \texttt{listings} package, which is useful to showcase nicely samples of code.
+    The \texttt{sleek-listings} package is a small collection of styles and languages for the \texttt{listings} package, which is useful to showcase nicely samples of code. The package provides the styles \texttt{default}, \texttt{numbered}, \texttt{framed}, \texttt{ruled}, \texttt{framednumbered} and \texttt{rulednumbered} and the languages \texttt{latex}, \texttt{c*}, \texttt{cpp*}, \texttt{matlab*}, \texttt{python*}, \texttt{java*} and \texttt{scheme}, with a simple color scheme for keywords and comments.
 
-    The package provides a very neutral (no line numbering, no frame, only good old black code) style called \texttt{default}. In addition, the language styles \texttt{c}, \texttt{cpp}, \texttt{matlab}, \texttt{python} and \texttt{java} are implemented, with basic color-maps.
+    For instance, if you want to showcase Python code within a ruled code block (top and bottom rule) with line numbers, you can either import a \texttt{.py} file with
 
-    Finally, some commands to build upon existing styles are provided:
+    \begin{lstlisting}[style=ruled, language=latex, gobble=4]
+    \lstinputlisting[style=rulednumbered, language=python*]{filename.py}
+    \end{lstlisting}
 
-    \begin{itemize}
-        \item \texttt{\tbs{}NumberStyle\{stylename\}} creates a style \texttt{stylenameNumber} with line numbering;
-        \item \texttt{\tbs{}FrameStyle\{stylename\}} creates a style \texttt{stylenameFrame} with an all around frame;
-        \item \texttt{\tbs{}FrameTBStyle\{stylename\}} creates a style \texttt{stylenameFrameTB} with top and bottom line rules;
-        \item \texttt{\tbs{}FrameNumberStyle\{stylename\}} and \texttt{\tbs{}FrameTBNumberStyle\{stylename\}} have the same logic.
-    \end{itemize}
+    or paste the code within the \LaTeX{} document as
 
-    For example, the \texttt{\tbs{}FrameTBStyle\{python\}} command creates the \texttt{pythonFrameTB} style, which can then be used to showcase \texttt{Python} code.
-
-    \FrameTBStyle{python}
-    \begin{lstlisting}[style=pythonFrameTB, gobble=4]
+    \begin{lstlisting}[style=rulednumbered, language=python*, gobble=4]
     import numpy as np # Unnecessary import
 
     a, b = 69., .420
 
     def f(a: float, b: float) -> float:
-        r"""
-        Sum two numbers
+        r"""Sum two numbers
 
         Parameters
         ----------
