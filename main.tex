@@ -123,9 +123,9 @@
 
     \subsection{Units}
 
-    The \texttt{siunitx} package provides three commands to typeset numbers and quantities -- \texttt{\tbs{}num}, \texttt{\tbs{}si} and \texttt{\tbs{}SI} -- as well as various units (see Table \ref{tab:siunitx_units}).
+    The \texttt{siunitx} package \cite{wright2022siunitx} provides three commands to typeset numbers, units and quantities: \texttt{\tbs{}num}, \texttt{\tbs{}unit} and \texttt{\tbs{}qty}.
 
-    It is possible to write, both in text or math modes, numbers without units (\eg{} \num{1}, \num{1.0}, \num{-1}, \num{3.14159}, \num{e100}, $N_A = \num{6.022e23}$), units without quantity (\eg{} $\si{\joule} = \si{\newton\meter} = \si{\kilogram\meter\squared\per\second\squared}$) and, finally, quantities with their units (\eg{} \SI{9.81}{\meter\per\second\squared}, $c = \SI{299.6e6}{\meter\per\second}$).
+    It is possible to write, both in text or math modes, numbers without units (\eg{} \num{1}, \num{1.0}, \num{-1}, \num{3.14159}, \num{e100}, $N_A = \num{6.022e23}$), units without quantity (\eg{} $\unit{\joule} = \unit{\newton\meter} = \unit{\kilogram\meter\squared\per\second\squared}$) and, finally, quantities with their units (\eg{} \qty{9.81}{\meter\per\second\squared}, $c = \qty{299.6e6}{\meter\per\second}$).
 
     \subsection{Lists}
 
@@ -197,7 +197,7 @@
              b &  ef &     jkl      & tuvx \\ \hline
             cd & ghi &     mnop     & wyz  \\ \hline
         \end{tabular}
-        \noskipcaption{Example of multi-column cells.}
+        \caption{Example of multi-column cells.}
         \label{tab:multicol_example}
     \end{table}
 
@@ -235,7 +235,7 @@
     \subtitle{With a sleeker title-page}
     \author{\textit{Author}\\Francois \textsc{Rozet}}
     %\supervisor{Linus \textsc{Torvalds}}
-    %\context{Well, I was bored...}
+    %\context{A long time ago in a galaxy far, far away...}
     \date{\today}
     \end{lstlisting}
 
@@ -406,42 +406,6 @@
         \end{tabular}
         \caption{Available math fonts in \LaTeX{} and AMS.}
         \label{tab:math_fonts}
-    \end{table}
-
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{>{\ttfamily\tbs{}}lr|>{\ttfamily\tbs{}}lr|>{\ttfamily}lr}
-            \toprule
-            metre     & \si{\metre}     & second       & \si{\second}       & \tbs{}mole      & \si{\mole}      \\
-            meter     & \si{\meter}     & ampere       & \si{\ampere}       & \tbs{}candela   & \si{\candela}   \\
-            kilogram  & \si{\kilogram}  & kelvin       & \si{\kelvin}       &                 &                 \\
-            \midrule
-            hertz     & \si{\hertz}     & farad        & \si{\farad}        & \tbs{}lumen     & \si{\lumen}     \\
-            newton    & \si{\newton}    & ohm          & \si{\ohm}          & \tbs{}lux       & \si{\lux}       \\
-            pascal    & \si{\pascal}    & siemens      & \si{\siemens}      & \tbs{}becquerel & \si{\becquerel} \\
-            joule     & \si{\joule}     & weber        & \si{\weber}        & \tbs{}gray      & \si{\gray}      \\
-            watt      & \si{\watt}      & tesla        & \si{\tesla}        & \tbs{}sievert   & \si{\sievert}   \\
-            coulomb   & \si{\coulomb}   & henry        & \si{\henry}        &                 &                 \\
-            volt      & \si{\volt}      & celsius      & \si{\celsius}      &                 &                 \\
-            \midrule
-            angstrom  & \si{\angstrom}  & day          & \si{\day}          & \tbs{}liter     & \si{\liter}     \\
-            arcminute & \si{\arcminute} & degree       & \si{\degree}       & \tbs{}litre     & \si{\litre}     \\
-            arcsecond & \si{\arcsecond} & electronvolt & \si{\electronvolt} & \tbs{}minute    & \si{\minute}    \\
-            barn      & \si{\barn}      & gram         & \si{\gram}         & \tbs{}neper     & \si{\neper}     \\
-            bar       & \si{\bar}       & hectare      & \si{\hectare}      & \tbs{}tonne     & \si{\tonne}     \\
-            bel       & \si{\bel}       & hour         & \si{\hour}         &                 &                 \\
-            \midrule
-            yocto     & \si{\yocto}     & milli        & \si{\milli}        & \tbs{}mega      & \si{\mega}      \\
-            zepto     & \si{\zepto}     & centi        & \si{\centi}        & \tbs{}giga      & \si{\giga}      \\
-            atto      & \si{\atto}      & deci         & \si{\deci}         & \tbs{}tera      & \si{\tera}      \\
-            femto     & \si{\femto}     & deca         & \si{\deca}         & \tbs{}peta      & \si{\peta}      \\
-            pico      & \si{\pico}      & deka         & \si{\deka}         & \tbs{}exa       & \si{\exa}       \\
-            nano      & \si{\nano}      & hecto        & \si{\hecto}        & \tbs{}zetta     & \si{\zetta}     \\
-            micro     & \si{\micro}     & kilo         & \si{\kilo}         & \tbs{}yotta     & \si{\yotta}     \\
-            \bottomrule
-        \end{tabular}
-        \caption{Available units in the \texttt{siunitx} package.}
-        \label{tab:siunitx_units}
     \end{table}
 
     \begin{table}[h]
