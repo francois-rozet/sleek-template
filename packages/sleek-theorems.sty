@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek-theorems}[2021/06/04 v1.1.0 Sleek Theorems]
+\ProvidesPackage{sleek-theorems}[2022/07/01 v1.1.1 Sleek Theorems]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -53,6 +53,8 @@
     \def\lgnote{Note}
     \def\lgtip{Conseil}
 }
+
+\ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%
 % Environments %
@@ -111,7 +113,5 @@
 
 \declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=answer, name=\lganswer]{fmd-answer}
 \declaretheorem[mdthm={style=thicc, nobreak=false}, sibling=example, name=\lgexample]{fmd-example}
-
-\ProcessOptions\relax
 
 \endinput

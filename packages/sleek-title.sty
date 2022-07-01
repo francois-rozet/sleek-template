@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek-title}[2021/08/06 v1.1.1 Sleek Title]
+\ProvidesPackage{sleek-title}[2022/07/01 v1.1.2 Sleek Title]
 
 %%%%%%%%%%%%%%%%
 % Requirements %
@@ -8,6 +8,36 @@
 \RequirePackage{graphicx}
 \RequirePackage[framemethod=TikZ]{mdframed}
 \RequirePackage[nomessages]{fp}
+
+%%%%%%%%%%%%
+% Settings %
+%%%%%%%%%%%%
+
+\newlength\topheight
+\newlength\logoheight
+\newlength\titleskipabove
+\newlength\titleskipbelow
+
+\newcommand*{\calculateheights}{
+    \countlines{\bfseries\huge\@title}
+    \FPeval{\topratio}{0.3 - 0.01 * (\numlines - 1)}
+    \FPeval{\skipratio}{\topratio - 0.15}
+    \setlength{\logoheight}{0.15\textheight}
+    \setlength{\topheight}{\topratio\textheight}
+    \setlength{\titleskipabove}{\skipratio\textheight}
+    \setlength{\titleskipbelow}{3ex}
+}
+
+\DeclareOption{classic}{
+    \renewcommand*{\calculateheights}{
+        \setlength{\logoheight}{0.125\textheight}
+        \setlength{\topheight}{0.2\textheight}
+        \setlength{\titleskipabove}{1.5cm}
+        \setlength{\titleskipbelow}{1.5cm}
+    }
+}
+
+\ProcessOptions\relax
 
 %%%%%%%%%%%%
 % Commands %
@@ -50,14 +80,7 @@
 \newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}\Supervisortrue}
 \newcommand*{\context}[1]{\gdef\@context{#1}\Contexttrue}
 
-%%%%%%%%%%%%%%
-% Title page %
-%%%%%%%%%%%%%%
-
-\newlength\topheight
-\newlength\logoheight
-\newlength\titleskipabove
-\newlength\titleskipbelow
+% Title page
 
 \renewcommand*{\maketitle}{
     \calculateheights
@@ -127,37 +150,5 @@
     \end{titlepage}
     \restoregeometry
 }
-
-%%%%%%%%%%%
-% Options %
-%%%%%%%%%%%
-
-\newcommand*{\calculateheights}{}
-
-\DeclareOption{center}{
-    \renewcommand*{\calculateheights}{
-        \countlines{\bfseries\huge\@title}
-        \FPeval{\topratio}{0.3 - 0.01 * (\numlines - 1)}
-        \FPeval{\skipratio}{\topratio - 0.15}
-        \setlength{\logoheight}{0.15\textheight}
-        \setlength{\topheight}{\topratio\textheight}
-        \setlength{\titleskipabove}{\skipratio\textheight}
-        \setlength{\titleskipbelow}{3ex}
-    }
-}
-
-\DeclareOption{custom}{
-    \renewcommand*{\calculateheights}{
-        \countlines{\bfseries\huge\@title}
-        \setlength{\logoheight}{0.125\textheight}
-        \setlength{\topheight}{0.2\textheight}
-        \setlength{\titleskipabove}{1.5cm}
-        \setlength{\titleskipbelow}{1.5cm}
-    }
-}
-
-\ExecuteOptions{center}
-
-\ProcessOptions\relax
 
 \endinput
