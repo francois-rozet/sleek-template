@@ -63,17 +63,14 @@
 
     \section{\texttt{sleek}}
 
-    \texttt{sleek} is the main package. It imports the packages (see Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use.
-
-    There are three available options to the \texttt{sleek} package :
+    \texttt{sleek} is the main package. It imports the packages (see Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use. Two options are provided:
 
     \begin{enumerate}[noitemsep]
-        \item \texttt{parindent} adds indentation to the first line of paragraphs;
         \item \texttt{header} adds a header with the current chapter to pages;
         \item \texttt{french} changes the decimal sign to a comma and translates some captions.
     \end{enumerate}
 
-    But nothing prevents you to tweak the settings to your liking in the source code.
+    But nothing prevents you from tweaking the settings to your liking in the source code.
 
     \subsection{Mathematics}
 
@@ -187,9 +184,9 @@
 
     \subsection{Tables}
 
-    The packages \texttt{multicol} and \texttt{multirow} comes handy for complex table formatting such as multi-column or multi-row cells.
+    The \texttt{multirow} package comes handy for complex table formatting such as multi-column or multi-row cells.
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \begin{tabular}{|r|r|c|l|}
             \hline
@@ -201,7 +198,7 @@
         \label{tab:multicol_example}
     \end{table}
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \begin{tabular}{|l|c|r|}
             \hline
@@ -348,8 +345,7 @@
             \texttt{graphicx} & Graphics \\
             \texttt{hyperref} & Hyperlinks and bookmarks \\
             \texttt{listings} & Code listings \\
-            \texttt{multicol} & Table cells that span multiple columns \\
-            \texttt{multirow} & Table cells that span multiple rows \\
+            \texttt{multirow} & Table cells that span multiple columns or rows \\
             \texttt{siunitx} & Typesetting of units  \\
             \texttt{subcaption} & Sub-figures and sub-captions \\
             \bottomrule

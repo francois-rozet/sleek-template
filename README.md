@@ -15,7 +15,3 @@ Sleek Template is [Overleaf](https://www.overleaf.com/) ready!
 3. Drag or select the downloaded archive
 4. Rename the project
 5. Enjoy :ok_hand:
-
-## Author
-
-* **François Rozet** - [francois-rozet](https://github.com/francois-rozet)

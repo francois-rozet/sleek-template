@@ -1,8 +1,8 @@
-\ProvidesPackage{sleek-listings}[2021/11/10 v1.1.2 Sleek Listings]
+\ProvidesPackage{sleek-listings}[2022/09/13 v1.2.0 Sleek Listings]
 
-%%%%%%%%%%%%%%%%
-% Requirements %
-%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%
+% Settings %
+%%%%%%%%%%%%
 
 \RequirePackage[scaled=0.95]{inconsolata}
 \RequirePackage{listings}
@@ -94,22 +94,17 @@
 % Colors %
 %%%%%%%%%%
 
-\def\ForestGreen{\color[HTML]{228B22}}
-\def\TrueBlue{\color[HTML]{0000FF}}
-\def\VeronicaPurple{\color[HTML]{A020F0}}
-\def\JustGray{\color[HTML]{7F7F7F}}
-
-\def\FreeSpeechRed{\color[HTML]{DD0000}}
-\def\SafetyOrange{\color[HTML]{FF7700}}
-\def\DarkMagenta{\color[HTML]{900090}}
-\def\IslamicGreen{\color[HTML]{00AA00}}
+\definecolor{ForestGreen}{HTML}{228B22}
+\definecolor{TrueBlue}{HTML}{0000FF}
+\definecolor{VeronicaPurple}{HTML}{A020F0}
+\definecolor{JustGray}{HTML}{7F7F7F}
 
 \lstdefinestyle{colorful}{
-    commentstyle=\ForestGreen,
-    keywordstyle=[1]{\TrueBlue},
-    keywordstyle=[2]{\VeronicaPurple},
-    stringstyle=\JustGray,
-    emphstyle=\textbf
+    commentstyle=\color{ForestGreen},
+    keywordstyle=[1]{\color{TrueBlue}},
+    keywordstyle=[2]{\color{VeronicaPurple}},
+    stringstyle=\color{JustGray},
+    emphstyle=\bfseries
 }
 
 %%%%%%%%%%%%%
