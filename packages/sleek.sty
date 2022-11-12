@@ -127,6 +127,11 @@
     backrefpages = {pages}
 }
 
+\DefineBibliographyStrings{german}{
+    backrefpage = {page},
+    backrefpages = {pages}
+}
+
 % Others
 
 \RequirePackage{comment}
@@ -155,6 +160,25 @@
     %% Macros
     \def\cad{c.-à-d.\@}
     \def\Cad{C.-à-d.\@}
+}
+
+\DeclareOption{german}{
+    %% Lists
+    \germansetup{StandardLists=true}
+    
+    %% Units
+    \sisetup{output-decimal-marker=.}
+    
+    %% Captions
+    \addto\captionsgerman{\def\figurename{Abbildung}}
+    \addto\captionsgerman{\def\tablename{Tabelle}}
+    \addto\captionsgerman{\def\proofname{Beweis}}
+    \addto\captionsgerman{
+        \renewcommand{\contentsname}{Inhaltsverzeichnis}
+    }
+    
+    %% Macros
+    \def\zb{\emph{z.B.}\@} % zum Beispiel
 }
 
 \ProcessOptions\relax
