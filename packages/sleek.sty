@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2022/10/03 v1.2.1 Sleek]
+\ProvidesPackage{sleek}[2022/11/18 v1.2.2 Sleek]
 
 %%%%%%%%%%%%
 % Settings %
@@ -146,39 +146,13 @@
 }
 
 \DeclareOption{french}{
-    %% Lists
+    %% Babel
     \frenchbsetup{StandardLists=true}
-
-    %% Units
-    \sisetup{output-decimal-marker=,}
-
-    %% Captions
-    \addto\captionsfrench{\def\figurename{Figure}}
-    \addto\captionsfrench{\def\tablename{Table}}
-    \addto\captionsfrench{\def\proofname{Preuve}}
+    \frenchbsetup{SmallCapsFigTabCaptions=false}
 
     %% Macros
     \def\cad{c.-à-d.\@}
     \def\Cad{C.-à-d.\@}
-}
-
-\DeclareOption{german}{
-    %% Lists
-    \germansetup{StandardLists=true}
-
-    %% Units
-    \sisetup{output-decimal-marker=.}
-
-    %% Captions
-    \addto\captionsgerman{\def\figurename{Abbildung}}
-    \addto\captionsgerman{\def\tablename{Tabelle}}
-    \addto\captionsgerman{\def\proofname{Beweis}}
-    \addto\captionsgerman{
-        \renewcommand{\contentsname}{Inhaltsverzeichnis}
-    }
-
-    %% Macros
-    \def\zb{\emph{z.B.}\@} % zum Beispiel
 }
 
 \ProcessOptions\relax
