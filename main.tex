@@ -70,11 +70,28 @@
         \item \texttt{french} makes the French setup consistent with other languages.
     \end{enumerate}
 
-    But nothing prevents you from tweaking the settings to your liking in the source code.
+    But nothing prevents you from tweaking the settings to your liking in the source code. For example, you can change the font of the document from \enquote{Latin Modern Roman} to \enquote{Linux Libertine}, by replacing
+
+    \begin{lstlisting}[style=ruled, language=latex, gobble=4]
+    % Font
+    \RequirePackage{lmodern}
+    \RequirePackage[T1]{fontenc}
+    \end{lstlisting}
+
+    with
+
+    \begin{lstlisting}[style=ruled, language=latex, gobble=4]
+    % Font
+    \RequirePackage{libertine}
+    \RequirePackage{libertinust1math}
+    \RequirePackage[T1]{fontenc}
+    \end{lstlisting}
+
+    in the \texttt{sleek.sty} file.
 
     \subsection{Mathematics}
 
-    This template uses \texttt{amsmath} and \texttt{amssymb}, which are the de-facto standard for typesetting mathematics. Additionally, \texttt{esint} provides alternative integral symbols (\cf{} Table 78 in \cite{pakin2020comprehensive}) and \texttt{bm} is used for bold math symbols like vectors (see \eqref{eq:gauss_law}).
+    This template uses \texttt{amsmath} and \texttt{amssymb}, which are the de-facto standard for typesetting mathematics. Additionally, \texttt{esint} provides alternative integral symbols (see Table 78 in \cite{pakin2020comprehensive}) and \texttt{bm} is used for bold math symbols like vectors (see \eqref{eq:gauss_law}).
 
     A few custom macros have also been added such as \texttt{\tbs{}rbk}, \texttt{\tbs{}sbk} and \texttt{\tbs{}cbk} for respectively round, square and curly brackets or \texttt{\tbs{}abs} for absolute value. Here follows some examples showcasing what is possible with the default packages of \texttt{sleek}.
 
