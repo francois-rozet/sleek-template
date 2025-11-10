@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{report}
+\documentclass[a4paper,12pt]{report}
 
 %%%%%%%%%%%%
 % Packages %
@@ -43,38 +43,48 @@
 
 \begin{document}
     \maketitle
-    \romantableofcontents
+
+    \clearpage
+    \pagenumbering{roman}
+    \tableofcontents
+    \clearpage
+    \pagenumbering{arabic}
 
     \chapter{Introduction}
 
-    Sleek Template is a minimal collection of \LaTeX{} packages and settings that ease the writing of beautiful documents. While originally meant for theses, it is perfectly suitable for project reports, articles, syntheses, etc. -- with a few adjustments, like margins.
+    Sleek Template is a minimal collection of \LaTeX{} packages and settings that ease the writing of beautiful documents. While originally meant for theses, it is perfectly suitable for project reports, articles, syntheses, etc. -- with a few adjustments, like margins. As such the template is compatible with many document classes, such as \texttt{article}, \texttt{report} or \texttt{book}.
 
-    It is composed of four separate packages which can be used individually: \texttt{sleek}, \texttt{sleek-title}, \texttt{sleek-theorems} and \texttt{sleek-listings}.
+    \begin{lstlisting}[style=ruled, language=latex, gobble=4]
+    \documentclass[a4paper,12pt,twoside,openany]{book}
+    \end{lstlisting}
+
+    The template is composed of four separate packages which can be used individually: \texttt{sleek}, \texttt{sleek-title}, \texttt{sleek-theorems} and \texttt{sleek-listings}.
 
     \begin{lstlisting}[style=ruled, language=latex, caption={Example of Sleek Template packages usage.}, gobble=4]
     \usepackage[english]{babel}
-    \usepackage[noheader]{packages/sleek}
+    \usepackage{packages/sleek}
     \usepackage{packages/sleek-title}
     \end{lstlisting}
 
-    \blindfootnote{If you are a \LaTeX{} beginner consider the excellent tutorial \citetitle{overleaf}, \textcite{overleaf}. Also, there are a lot of symbols available in \LaTeX{} and, therefore, in this template. I recommend the use of \citetitle{pakin2020comprehensive}, \textcite{pakin2020comprehensive} for searching symbols.}
+    \blindfootnote{If you are a \LaTeX{} beginner, consider the excellent tutorial \citetitle{overleaf}, \textcite{overleaf}. Also, there are a lot of symbols available in \LaTeX{} and, therefore, in this template. I recommend the use of \citetitle{pakin2020comprehensive}, \textcite{pakin2020comprehensive} for searching symbols.}
 
     \chapter{Features}
 
     \section{\texttt{sleek}}
 
-    \texttt{sleek} is the main package. It imports the packages (see Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use. Two options are provided:
+    \texttt{sleek} is the main package. It imports the packages (see Table \ref{tab:sleek_relevant_packages}) and setups the settings that make Sleek Template easy to use. The package provides two options:
 
     \begin{enumerate}[noitemsep]
         \item \texttt{header} adds a header with the current chapter to pages;
         \item \texttt{french} makes the French setup consistent with other languages.
     \end{enumerate}
 
-    But nothing prevents you from tweaking the settings to your liking in the source code. For example, you can change the font of the document from \enquote{Latin Modern Roman} to \enquote{Linux Libertine}, by replacing
+    However, nothing prevents you from tweaking the settings to your liking in the source code. For example, you can change the font of the document from \enquote{Linux Libertine} to \enquote{Latin Modern Roman}, by replacing
 
     \begin{lstlisting}[style=ruled, language=latex, gobble=4]
     % Font
-    \RequirePackage{lmodern}
+    \RequirePackage{libertine}
+    \RequirePackage{libertinust1math}
     \RequirePackage[T1]{fontenc}
     \end{lstlisting}
 
@@ -82,8 +92,7 @@
 
     \begin{lstlisting}[style=ruled, language=latex, gobble=4]
     % Font
-    \RequirePackage{libertine}
-    \RequirePackage{libertinust1math}
+    \RequirePackage{lmodern}
     \RequirePackage[T1]{fontenc}
     \end{lstlisting}
 
@@ -230,8 +239,7 @@
 
     The \texttt{booktabs} package also provides tools to build publication-ready tables. The tables in Appendix \ref{chap:Tables} are good examples.
 
-    \newpage
-
+    \clearpage
     \section{\texttt{sleek-title}}
 
     Sleek Template offers a custom title-page with the package \texttt{sleek-title}. The formatting of the title-page is automatically inferred from the fields that the user has provided.
@@ -255,8 +263,7 @@
 
     It is also possible to use Sleek Template without \texttt{sleek-title}, in which case the default \LaTeX{} title-page will be used.
 
-    \newpage
-
+    \clearpage
     \section{\texttt{sleek-theorems}}
 
     \texttt{sleek-theorems} is based on the \texttt{amsthm} and \texttt{thmtools} packages. It provides a handful of theorem-like environments, each of which have different style and purpose: \texttt{theorem}, \texttt{lemma}, \texttt{proposition}, \texttt{proof}, \texttt{definition}, \texttt{hypothesis}, \texttt{method}, \texttt{question}, \texttt{answer}, \texttt{example}, \texttt{remark}, \texttt{note} and \texttt{tip}.
@@ -301,8 +308,7 @@
         Based on the theorem \ref{thm:Triangle inequality}, what is the shortest path from a point $A$ to a point $B$ in Euclidean geometry ?
     \end{fmd-question*}
 
-    \newpage
-
+    \clearpage
     \section{\texttt{sleek-listings}}
 
     The \texttt{sleek-listings} package is a small collection of styles and languages for the \texttt{listings} package, which is useful to showcase nicely samples of code. The package provides the styles \texttt{default}, \texttt{numbered}, \texttt{framed}, \texttt{ruled}, \texttt{framednumbered} and \texttt{rulednumbered} and the languages \texttt{latex}, \texttt{c*}, \texttt{cpp*}, \texttt{matlab*}, \texttt{python*}, \texttt{java*} and \texttt{scheme}, with a simple color scheme for keywords and comments.

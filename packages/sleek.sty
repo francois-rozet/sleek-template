@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2023/09/18 v1.2.3 Sleek]
+\ProvidesPackage{sleek}[2025/11/09 v2.0.0 Sleek]
 
 %%%%%%%%%%%%
 % Settings %
@@ -10,23 +10,56 @@
 
 % Font
 
-\RequirePackage{lmodern}
+\RequirePackage{libertine}
+\RequirePackage{libertinust1math}
+\RequirePackage[scaled=0.8]{beramono}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{microtype}
+\RequirePackage[none]{hyphenat} % never hyphenate
+
+\emergencystretch=\maxdimen % never display text out of margin
 
 % Layout
 
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
-\RequirePackage[bottom]{footmisc}
+\RequirePackage[strict]{changepage} % for side notes
+\RequirePackage[style=empty]{clrdblpg} % skip empty double pages
+\RequirePackage[bottom,flushmargin]{footmisc} % flush footnotes
 
-\geometry{margin=2.5cm}
+\geometry{
+    margin=2.5cm,
+    footskip=1cm,
+    % marginparwidth=3cm,
+    % marginparsep=0.5cm,
+    % bindingoffset=0cm,
+    includefoot,
+    % includemp,
+}
 
 \pagestyle{fancy}
 \fancyhead[L]{}
 \fancyhead[R]{}
 \fancyfoot[C]{\thepage}
+
 \renewcommand*{\headrulewidth}{0pt}
+
+% Titles
+
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+
+\titleformat{\part}[display]{\centering\Huge\scshape}{\thepart}{0em}{}
+\titleformat{\chapter}{\huge\scshape}{\thechapter}{1em}{}
+\titleformat*{\section}{\Large\scshape}
+\titleformat*{\subsection}{\large\scshape}
+\titleformat*{\subsubsection}{\normalsize\scshape}
+
+\titlespacing*{\part}{0em}{7.5cm}{0em}
+\titlespacing*{\chapter}{0em}{2.5cm}{1em}
+
+\renewcommand{\chaptermark}[1]{\markboth{\scshape\thechapter\hspace{0.5em} #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\scshape\thesection\hspace{0.5em} #1}}
 
 % Text
 
@@ -53,6 +86,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{bm}
 \RequirePackage{esint}
+\RequirePackage{nicefrac}
 \RequirePackage{mathtools}
 
 % Units
@@ -67,6 +101,7 @@
 \RequirePackage{float}
 \RequirePackage[skip=1.5ex]{caption}
 \RequirePackage{subcaption}
+\RequirePackage{wrapfig}
 
 \captionsetup{labelsep=period} % 'Figure 1.2.' instead of 'Figure 1.2:'
 
@@ -102,21 +137,33 @@
 \algnewcommand\Break{\textbf{break}}
 \algnewcommand\Continue{\textbf{continue}}
 
+% Appendix
+
+\RequirePackage{appendix} % subappendices environment
+
 % Bibliography
 
 \RequirePackage[
     backend=biber,
     style=numeric-comp,
     sorting=none,
+    % refsection=chapter, % refs per chapter
     maxcitenames=1,
     maxbibnames=3,
-    backref=true
+    backref=false,
+    url=true,
+    doi=false,
+    isbn=false,
+    eprint=false,
 ]{biblatex}
+\RequirePackage{xurl} % break out-of-bounds URLs
 
 \setlength\bibitemsep{1ex}
 
 \DeclareFieldFormat*{title}{\enquote{#1}}
 \DeclareFieldFormat*{citetitle}{\enquote{#1}}
+
+\renewcommand*{\intitlepunct}{\space}
 
 \DefineBibliographyStrings{english}{
     backrefpage = {page},
@@ -133,27 +180,38 @@
     backrefpages = {Seiten}
 }
 
+\makeatletter
+\DeclareCiteCommand{\fullcite} % cite ALL authors
+    {\usebibmacro{prenote}}
+    {\usedriver
+        {\c@maxnames99\relax
+        \DeclareNameAlias{sortname}{default}}
+        {\thefield{entrytype}}}
+    {\multicitedelim}
+    {\usebibmacro{postnote}}
+\makeatother
+
 % Others
 
 \RequirePackage{comment}
+\RequirePackage{lipsum}
 
 %%%%%%%%%%%
 % Options %
 %%%%%%%%%%%
 
+% Header
+
 \DeclareOption{header}{
-    \geometry{top=3.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm}
+    \geometry{includehead}
     \fancyhead[R]{\leftmark}
 }
 
+% Babel
+
 \DeclareOption{french}{
-    %% Babel
     \frenchbsetup{StandardLists=true}
     \frenchbsetup{SmallCapsFigTabCaptions=false}
-
-    %% Macros
-    \def\cad{c.-à-d.\@}
-    \def\Cad{C.-à-d.\@}
 }
 
 \ProcessOptions\relax
@@ -168,16 +226,6 @@
 \def\eg{\emph{e.g.}\@} % exempli gratia
 \def\ie{\emph{i.e.}\@} % id est
 
-% Table of contents
-
-\newcommand*{\romantableofcontents}{ % table of contents with roman (i, ii, ...) numbering of the pages
-    \newpage
-    \pagenumbering{roman}
-    \tableofcontents
-    \newpage
-    \pagenumbering{arabic}
-}
-
 % Mathematics
 
 \DeclarePairedDelimiter\rbk{(}{)} % round brackets (parentheses)
@@ -190,6 +238,7 @@
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor ⌊x⌋
 
 \newcommand*{\fact}[1]{#1!} % factorial x!
+\newcommand*{\grad}[1]{\nabla_{\!{#1}}} % gradient
 
 \renewcommand*{\d}[1]{\operatorname{d}\!{#1}} % upright 'd' for differential
 
@@ -205,5 +254,16 @@
 \makeatletter
 \def\blindfootnote{\gdef\@thefnmark{}\@footnotetext} % footnote without number
 \makeatother
+
+% Sidenotes
+
+\newcommand{\sidenote}[1]{%
+\checkoddpage%
+\ifoddpage
+\marginpar{\raggedright\footnotesize #1}
+\else
+\marginpar{\raggedleft\footnotesize #1}
+\fi
+}
 
 \endinput
