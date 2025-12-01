@@ -1,4 +1,4 @@
-\ProvidesPackage{sleek}[2025/11/09 v2.0.0 Sleek]
+\ProvidesPackage{sleek}[2025/12/01 v2.0.1 Sleek]
 
 %%%%%%%%%%%%
 % Settings %
@@ -204,7 +204,14 @@
 
 \DeclareOption{header}{
     \geometry{includehead}
+    \makeatletter
+    \if@twoside%
     \fancyhead[R]{\leftmark}
+    \else%
+    \fancyhead[LE]{\leftmark}
+    \fancyhead[RO]{\rightmark}
+    \fi%
+    \makeatother
 }
 
 % Babel
@@ -257,13 +264,21 @@
 
 % Sidenotes
 
+\makeatletter
+\if@twoside%
 \newcommand{\sidenote}[1]{%
-\checkoddpage%
-\ifoddpage
-\marginpar{\raggedright\footnotesize #1}
-\else
-\marginpar{\raggedleft\footnotesize #1}
-\fi
+    \checkoddpage%
+    \ifoddpage%
+    \marginpar{\raggedright\footnotesize #1}
+    \else%
+    \marginpar{\raggedleft\footnotesize #1}
+    \fi%
 }
+\else%
+\newcommand{\sidenote}[1]{%
+    \marginpar{\raggedright\footnotesize #1}
+}
+\fi%
+\makeatother
 
 \endinput
